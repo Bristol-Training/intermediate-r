@@ -1,75 +1,88 @@
 ---
-title: Installing packages
+title: Installing CRAN packages
 ---
 
+CRAN packages can be easily installed using the `install.packages` function. For example, the [`stringr`](https://cran.r-project.org/web/packages/stringr/index.html) package provides a set of modern functions for manipulating and formatting strings.
 
-For example, the [Stringr](https://cran.r-project.org/web/packages/stringr/index.html)
-package provides a set of modern functions for manipulating and 
-formatting strings.
-
-To use `Stringr`, we first need to install the package. You install
-packages in R using `install.packages`, e.g. type into your console;
+To use `stringr`, we first need to install the package typing into your script or console:
 
 ```r
 install.packages("stringr")
 ```
 
-and hit return. If your user account has permission to install packages then
-you should see something like;
+and click `run` or hit return, respectively. If your user account has permission to install packages then you should see something like:
 
 ```
-trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/stringr_1.4.0.tgz'
-Content type 'application/x-gzip' length 210650 bytes (205 KB)
+trying URL 'https://cloud.r-project.org/bin/macosx/big-sur-arm64/contrib/4.4/stringr_1.5.1.tgz'
+Content type 'application/x-gzip' length 314273 bytes (306 KB)
 ==================================================
-downloaded 205 KB
-
+downloaded 306 KB
 
 The downloaded binary packages are in
-	/var/folders/vg/lyxsq9391fxfm64hfdfr88f40000gq/T//Rtmp57uUY0/downloaded_packages
+	/var/folders/bq/2w1p57q54r78thfjpfy2cbrc0000gp/T//RtmpQ8lR4N/downloaded_packages
 ```
 
-Notice that this will automatically get the right package for your operating
-system (in my case `macosx`). Also note that you only have to do this once,
-as once installed, this package is available for everyone.
-
+Notice that this will automatically get the right package for your operating system (in this example `macosx`). Also note that you *only have to do this once*, as once installed, this package is already available. If you have permission issues installing new packages in your system, you can try installing them in your user space with
+```r
+install.packages("stringr", lib="/Users/ab12345/rlib")
+```
+where `/Users/ab12345/rlib` is a folder in your user space; or contact your IT service for help.
 
 
 
 ## Updating packages
 
-R's strength is its packages, and what makes this easier is that
-package management is handled directly within the language.
+R package management is handled directly within the language, what makes makes easier to install packages and keep them up to date.
 
-You can update a package by running `install.packages` again, e.g.
-to update `stringr` to the newest version, just type;
+To update a package you can simply run `install.packages` again, e.g. to update `stringr` to the newest version, just type:
 
 ```r
 install.packages("stringr")
 ```
 
-You can get a list of all installed packages via `installed.packages()`,
-e.g.
+You can get a list of all installed packages via `installed.packages()`, e.g.
 
-```r
-installed.packages()
+```{r}
+# note that we are printing only a few of them
+installed.packages()[10:30]
 ```
 
-You can get a list of all packages for which new versions are available
-using `old.packages()`, e.g.
+You can get a list of all packages for which new versions are available using `old.packages()`, e.g.
 
 ```r
 old.packages()
 ```
+```{r}
+#| echo: false
 
-You can update all packages for which updates are available using
-`update.packages()`. Set `ask=FALSE` to update everything
-without prompting, e.g.
-
-```r
-update.packages(ask=FALSE)
+cat('           Installed  Built   ReposVer  Repository                            
+boot       "1.3-30"   "4.4.0" "1.3-31"  "https://cran.rstudio.com/src/contrib"
+foreign    "0.8-86"   "4.4.0" "0.8-87"  "https://cran.rstudio.com/src/contrib"
+glue       "1.7.0"    "4.4.0" "1.8.0"   "https://cran.rstudio.com/src/contrib"
+KernSmooth "2.23-22"  "4.4.0" "2.23-24" "https://cran.rstudio.com/src/contrib"
+MASS       "7.3-60.2" "4.4.0" "7.3-61"  "https://cran.rstudio.com/src/contrib"
+Matrix     "1.7-0"    "4.4.0" "1.7-1"   "https://cran.rstudio.com/src/contrib"
+nlme       "3.1-164"  "4.4.0" "3.1-166" "https://cran.rstudio.com/src/contrib"
+survival   "3.5-8"    "4.4.0" "3.7-0"   "https://cran.rstudio.com/src/contrib"
+')
 ```
 
-Note that updating all of your packages could take a while if you haven't
-done it recently...
+You can update all packages for which updates are available using `update.packages()`. You can add the option `update.packages(ask=FALSE)` to update everything without prompting. Note that updating all of your packages could take a while if you haven't done it recently.
 
+```r
+update.packages()
+```
+```{r}
+#| echo: false
+
+cat('boot :
+ Version 1.3-30 installed in /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library 
+ Version 1.3-31 available at https://cran.rstudio.com
+Update? (Yes/no/cancel)
+')
+```
+
+::: {#keypointsN .callout-tip icon=false title='Updates and reproducibility'}
+Software updates can pose challenges for reproducibility. It's important to document and track the specific versions of software and packages used. `renv` is a package management tool for R that helps create reproducible environments.
+:::
 

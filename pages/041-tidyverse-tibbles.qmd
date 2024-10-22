@@ -2,39 +2,24 @@
 title: Tibbles
 ---
 
+### Recap dataframes
 
 
-
-## Loading the tidyverse
-
-
-```r
-library(tidyverse)
-```
 
 
 ## Tibbles and readr
 
-We will learn and use the tidyverse in much more depth in future 
-workshops. For today, we will look at `tibble`. A `tibble` is the
-modern tidyverse version of a `data.frame`. A `tibble` is a `data.frame`,
-and so can be used in the same way. But it comes with more powerful
-features and removes inconsistent and confusing behaviour.
+A `tibble` is the modern `tidyverse` version of a `data.frame`. A `tibble` is a `data.frame`, and so can be used in the same way. But it comes with more powerful features and removes inconsistent and confusing behaviour.
 
-In the same way, `readr` provides modern tidyverse replacements 
-for R's standard reading functions. `readr` provides `read_csv`,
-which is a better way of reading csv files than R's standard
-`read.csv`.
+In the same way, `readr` provides modern `tidyverse` replacements  for R's standard reading functions. `readr` provides `read_csv`, which is a better way of reading csv files than R's standard `read.csv`.
 
-Let's now use the tidyverse to `read_csv` the cats data set
-into a `tibble`.
+Let's now use the `tidyverse` to `read_csv` the cats data set into a `tibble`.
 
 ```r
-cats <- read_csv("https://chryswoods.com/intermediate_r/data/cats.csv")
+cats <- read_csv("https://bristol-training.github.io/intermediate-r/data/cats.csv")
 ```
 
-The first thing you will notice is that the tidyverse has printed
-out some useful information;
+The first thing you will notice is that the `tidyverse` has printed out some useful information:
 
 ```
 Parsed with column specification:
@@ -45,15 +30,15 @@ cols(
 )
 ```
 
-This is telling you that `read_csv` found three columns; `Sex`, which 
-is treated as a columns of strings (characters), and 
-`BodyWeight` and `HeartWeight`, which are both treated as columns
-of floating point numbers (doubles).
+This is telling you that `read_csv` found three columns; `Sex`, which is treated as a columns of strings (characters), and `BodyWeight` and `HeartWeight`, which are both treated as columns of floating point numbers (doubles).
 
-Next, if you type `cats` and press return...
+Next, if you type `cats` and press return you will see
 
 ```r
-cats
+cats$Bodyweight
+```
+
+```
 # A tibble: 144 x 3
    Sex   BodyWeight HeartWeight
    <chr>      <dbl>       <dbl>
@@ -70,12 +55,9 @@ cats
 # … with 134 more rows
 ```
 
-You can see that the `tibble` summarises itself to the screen. 
-This makes it much easier to quickly look at some data without 
-it overflowing your console.
+You can see that the `tibble` summarises itself to the screen. This makes it much easier to quickly look at some data without it overflowing your console.
 
-As a `tibble` is a `data.frame`, you can use the same methods
-of accessing data, e.g.
+As a `tibble` is a `data.frame`, you can use the same methods of accessing data, e.g.
 
 ```r
 cats$Bodyweight

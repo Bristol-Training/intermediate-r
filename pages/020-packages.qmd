@@ -2,212 +2,37 @@
 title: Packages
 ---
 
-While there are a good number of built-in functions and types, and you can go a long way without needing anything more, they are ultimately limited. Luckily, R has a "batteries included" philosophy and provides a lot of additional functionality which can be explored in [The R Standard Library](https://docs.RScript.org/3/library/).
+The R community actively contributes to package development, resulting in a rapidly growing ecosystem of packages that extend the core functionality. This package ecosystem is one of its greatest strengths, providing an extensive collection of tools and functionalities that make R a powerful language for data analysis, statistics, and visualization.
 
-The functionality provided by the Standard Library is provided in a series of *modules*, each of which serves a particular purpose. The modules in the Standard Library are always installed in any version of R you have. Note that even though they are always accessible, they do not count as "built-in" as in R terms, that means something which you can use without having to access any extra modules.
+Packages can be found hosted in different repositiories on the Internet. The main ones are:
 
-### The `math` module
+- CRAN (Comprehensive R Archive Network): the official repository containing thousands of packages
+- Bioconductor: a repository focused on bioinformatics
+- GitHub: some developers host their R packages on GitHub
 
-Let's start by looking at one of the modules, the "[`math` — Mathematical functions](https://docs.RScript.org/3/library/math.html)" module. This module provides a bunch of mathematical tools such as averages, trigonometry etc.
+R packages in CRAN can be easily installed using the `install.packages()` function. Once installed, packages are loaded into the R environment using the `library()` function. We are going to see examples of of how to use both functions in this section.
 
-You can get access to the module by *importing* it by name:
-
-```{.r}
-import math
-```
-
-Once it is imported, you can use any of the functions inside it by typing the name of the module, followed by a dot, followed by the name of the function. So to call the [square root function](https://docs.RScript.org/3/library/math.html#math.sqrt) you would do:
-
-```{.r}
-#| filename: imports.R
-import math
-
-print(math.sqrt(25))
-```
-
-You can think of this as saying "from the `math` module that I've just imported, get the `sqrt` function and call it".
-
-Alternatively, if you want to grab a specific function out of a module so that you can call it without specifying the module name, you can do:
-
-```{.r}
-#| filename: imports.R
-from math import sqrt
-
-print(sqrt(25))
-```
-
-
-Note that we have seen two examples of places where dot `.` is used when calling functions in R:
-
-1. calling a method on a variable like with `my_list.append()` or `my_string.split()`,
-2. calling a function from an imported module like `math.sqrt()`.
-
-In both these cases the dot is doing a very similar job. It's saying "look inside the thing on the left of the dot for a thing called ...". In some cases, it's looking inside a data type, and in other it's looking inside a module.
-
-::: {#exercise1 .callout-note title="Exercise" icon=false} 
-
-We saw earlier how to check our current working directory in the Command Prompt/Terminal using `cd` (Windows) and `pwd` (MacOS and Linux). Using the [The R Standard Library](https://docs.RScript.org/3/library/), find a function that returns the working directory in R.
-
-:::
-
-
-It is worth, over time, becoming familiar with the various functions that are available. Some are quite useful for everyday work and some are more niche.
-
-
-
-
-
-
-The string formatting in R can feel old fashioned because R is an 
-old programming language. R was created in 1995 to be a better
-version of an even older programming language called 
-[S](https://en.wikipedia.org/wiki/S_(programming_language)),
-which was created in 1976. The clunkiness of parts of R
-when compared to modern languages is due to this heritage.
-
-Fortunately, R is not stuck in the past. R comes with a lot of packages
-that extend the core functionality, and provide a more modern
-interface to its most powerful functionality. When we use
-R with these packages, we are using "modern R".
-
-For example, the [Stringr](https://cran.r-project.org/web/packages/stringr/index.html)
-package provides a set of modern functions for manipulating and 
-formatting strings.
-
-To use `Stringr`, we first need to install the package. You install
-packages in R using `install.packages`, e.g. type into your console;
-
-```r
-install.packages("stringr")
-```
-
-and hit return. If your user account has permission to install packages then
-you should see something like;
-
-```
-trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/stringr_1.4.0.tgz'
-Content type 'application/x-gzip' length 210650 bytes (205 KB)
-==================================================
-downloaded 205 KB
-
-
-The downloaded binary packages are in
-	/var/folders/vg/lyxsq9391fxfm64hfdfr88f40000gq/T//Rtmp57uUY0/downloaded_packages
-```
-
-Notice that this will automatically get the right package for your operating
-system (in my case `macosx`). Also note that you only have to do this once,
-as once installed, this package is available for everyone.
-
-## Using a package
-
-You can use a package in your script via the `library` command. To use
-`stringr` you should type;
-
-```r
-library(stringr)
-```
-
-into the console. When you press return, nothing should happen. If you see
-output similar to;
-
-```
-Error in library(stringr) : there is no package called ‘stringr’
-```
-
-then this means that `stringr` is not installed properly.
-
-To get help on a package type `?` before its name, e.g.
-
-```r
-?stringr
-```
-
-All of the functions in `stringr` start with `str_` and take 
-a string (or vector/list of strings) as the first argument.
-
-Key functions are;
-
-* `str_c` : Modern replacement for `cat`
-* `str_length` : Count the number of characters in a string
-* `str_sub` : Extract substrings
-* `str_trim` : Remove trailing and leading whitespace
-* `str_pad` : Pad a string
-* `str_wrap` : Wrap a string into a paragraph
-
-> EXERCISE
->
-> Use `?` to learn about the above `stringr` functions and have a play
-> printing different strings to the console.
->
-> [Answer](packages_answer01.html)
 
 ## CRAN
 
-The power of R comes from its great wealth of excellent packages. These
-packages are managed in a central repository called 
-[CRAN](https://cran.r-project.org) (the Comprehensive R Archive Network).
-There are very strict protocols to follow to publish a package
-in CRAN, which includes an external review stage. As such, publishing
-an R package is a lot like publishing a paper, and so R packages
-on CRAN are mostly of a high standard, and come complete with 
-documentation and tests. You can get an idea of what is needed to
-publish a package on CRAN by reading [R Packages](https://r-pkgs.org)
-by Hadley Wickham and Jennifer Bryan. This excellent online book
-provides complete detail of how to write and publish an R package.
+The power of R comes from its great wealth of excellent packages. These packages are managed in a central repository called 
+[CRAN](https://cran.r-project.org) (the Comprehensive R Archive Network). There are very strict protocols to follow to publish a package in CRAN, which includes an external review stage. As such, publishing an R package is a lot like publishing a paper, and so R packages on CRAN are mostly of a high standard, and come complete with documentation and tests. You can get an idea of what is needed to publish a package on CRAN by reading [R Packages](https://r-pkgs.org) by Hadley Wickham and Jennifer Bryan. This excellent online book provides complete detail of how to write and publish an R package.
 
-A good way to find the package you want is to use an R search
-service, such as [rseek](https://rseek.org). You can search
-for individual package names, or even the kind of thing you
-want to do. As most R packages come with vignettes (web pages
-that show examples of how to use the package) this means
-you can quickly find both the package that achieves your goal,
-plus really clear documentation and examples. 
+A good way to find the package you want is to use an R search service, such as [rseek](https://rseek.org). You can search for individual package names, or even the kind of thing you want to do. As most R packages come with *vignettes* (web pages that show documentation and examples of how to use the package) this means you can quickly find both the package that achieves your goal, plus documentation and examples. 
 
-> EXERCISE
->
-> Use [rseek](https://rseek.org) to look for packages that
-> help you calculate Pearson's product-moment correlation. Limit 
-> the search to vignettes. Can you find a vignette that shows
-> you how to do this? Do not worry that the R in the vignette
-> is more advanced than you've seen so far - it won't be long
-> before it will make sense ;-)
->
-> [Answer](packages_answer02.html)
 
-## Updating packages
+::: {#exampleN .callout-note icon=false title='Exercise'}
+Use [https://rseek.org](https://rseek.org) to look for packages that help you calculate Pearson's product-moment correlation. Limit the search to vignettes. Can you find a vignette that shows you how to do this? Do not worry that the R in the vignette is more advanced than you've seen so far - it won't be long before it will make sense.
+::: 
 
-R's strength is its packages, and what makes this easier is that
-package management is handled directly within the language.
+::: {#answerN .callout-caution icon=false title='Answer' collapse="true"}
 
-You can update a package by running `install.packages` again, e.g.
-to update `stringr` to the newest version, just type;
+Go to [https://rseek.org](https://rseek.org) and search for the method we are interested in: "pearson product-moment correlation". Set the search type to "Vignette", and you should see several results.
 
-```r
-install.packages("stringr")
-```
+This search result shows promise, so take a look at that: [broom and dply](https://cran.r-project.org/web/packages/broom/vignettes/broom_and_dplyr.html).
 
-You can get a list of all installed packages via `installed.packages()`,
-e.g.
+This page contains an example showing a calculation of Pearson's product-moment correlation. From this we can see that the `cor.test` from the `stats` package is used to calculate these correlations. We can get help with `cor.test` by typing `?cor.test` in the console.
+:::
 
-```r
-installed.packages()
-```
 
-You can get a list of all packages for which new versions are available
-using `old.packages()`, e.g.
 
-```r
-old.packages()
-```
-
-You can update all packages for which updates are available using
-`update.packages()`. Set `ask=FALSE` to update everything
-without prompting, e.g.
-
-```r
-update.packages(ask=FALSE)
-```
-
-Note that updating all of your packages could take a while if you haven't
-done it recently...

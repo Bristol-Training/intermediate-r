@@ -6,7 +6,6 @@ title: Functions
 You are likely already comfortable with *calling functions* such as:
 
 - free functions like `print()` and `range()`
-- functions on objects (also called *methods*) like `my_list.append()` and `my_str.split()`
 
 In this section we're going to explore other functions and methods available as part of R's core capabilities and in other modules. An important technical resource you probably will come across often is [The R Standard Library](https://docs.RScript.org/3/library/).
 
