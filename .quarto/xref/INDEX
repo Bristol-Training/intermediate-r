@@ -1,0 +1,56 @@
+{
+  "answers/answer_string_methods.qmd": {
+    "answer_string_methods.html": "ffe46979"
+  },
+  "answers/answer_hello_name.qmd": {
+    "answer_hello_name.html": "655b7c81"
+  },
+  "answers/answer_morse_case.qmd": {
+    "answer_morse_case.html": "b6933419"
+  },
+  "index.qmd": {
+    "index.html": "51b84f96"
+  },
+  "pages/030-functions.qmd": {
+    "030-functions.html": "f8976706"
+  },
+  "pages/980-summary.qmd": {
+    "980-summary.html": "2cd5e809"
+  },
+  "pages/032-writing-functions.qmd": {
+    "032-writing-functions.html": "c1291dbc"
+  },
+  "pages/043-tidyverse-exercise.qmd": {
+    "043-tidyverse-exercise.html": "2868af92"
+  },
+  "pages/042-tidyverse-pipe.qmd": {
+    "042-tidyverse-pipe.html": "6df74c84"
+  },
+  "pages/990-contributors.qmd": {
+    "990-contributors.html": "4ec9a830"
+  },
+  "pages/041-tidyverse-tibbles.qmd": {
+    "041-tidyverse-tibbles.html": "3bb64e9f"
+  },
+  "pages/070-worksheet.qmd": {
+    "070-worksheet.html": "e1e65383"
+  },
+  "pages/010-workspace-setup.qmd": {
+    "010-workspace-setup.html": "be66a5c5"
+  },
+  "pages/040-tidyverse.qmd": {
+    "040-tidyverse.html": "193eb84c"
+  },
+  "pages/022-loading-packages.qmd": {
+    "022-loading-packages.html": "f44fe60f"
+  },
+  "pages/031-importing-functions.qmd": {
+    "031-importing-functions.html": "27274d26"
+  },
+  "pages/021-install-packages.qmd": {
+    "021-install-packages.html": "6da09eaf"
+  },
+  "pages/020-packages.qmd": {
+    "020-packages.html": "1a2b0037"
+  }
+}
