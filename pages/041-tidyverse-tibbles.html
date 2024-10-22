@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Tibbles – Intermediate R</title>
+<title>Tibbles and readr – Intermediate R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -115,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/040-tidyverse.html">Tidyverse</a></li><li class="breadcrumb-item"><a href="../pages/041-tidyverse-tibbles.html">Tibbles</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/040-tidyverse.html">Tidyverse</a></li><li class="breadcrumb-item"><a href="../pages/041-tidyverse-tibbles.html">Tibbles and readr</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -213,19 +213,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/041-tidyverse-tibbles.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Tibbles</span></a>
+ <span class="menu-text">Tibbles and readr</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/042-tidyverse-pipe.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Pipes %&gt;%</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../pages/043-tidyverse-exercise.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">exercise</span></a>
   </div>
 </li>
       </ul>
@@ -253,21 +247,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#tibbles-and-readr" id="toc-tibbles-and-readr" class="nav-link active" data-scroll-target="#tibbles-and-readr">Tibbles and readr</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/040-tidyverse.html">Tidyverse</a></li><li class="breadcrumb-item"><a href="../pages/041-tidyverse-tibbles.html">Tibbles</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/040-tidyverse.html">Tidyverse</a></li><li class="breadcrumb-item"><a href="../pages/041-tidyverse-tibbles.html">Tibbles and readr</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Tibbles</h1>
+<h1 class="title">Tibbles and readr</h1>
 </div>
 
 
@@ -284,26 +272,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="recap-dataframes" class="level4">
-<h4 class="anchored" data-anchor-id="recap-dataframes">Recap dataframes</h4>
-</section>
-<section id="tibbles-and-readr" class="level3">
-<h3 class="anchored" data-anchor-id="tibbles-and-readr">Tibbles and readr</h3>
 <p>A <code>tibble</code> is the modern <code>tidyverse</code> version of a <code>data.frame</code>. A <code>tibble</code> is a <code>data.frame</code>, and so can be used in the same way. But it comes with more powerful features and removes inconsistent and confusing behaviour.</p>
 <p>In the same way, <code>readr</code> provides modern <code>tidyverse</code> replacements for R’s standard reading functions. <code>readr</code> provides <code>read_csv</code>, which is a better way of reading csv files than R’s standard <code>read.csv</code>.</p>
-<p>Let’s now use the <code>tidyverse</code> to <code>read_csv</code> the cats data set into a <code>tibble</code>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>cats <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://bristol-training.github.io/intermediate-r/data/cats.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The first thing you will notice is that the <code>tidyverse</code> has printed out some useful information:</p>
-<pre><code>Parsed with column specification:
-cols(
-  Sex = col_character(),
-  BodyWeight = col_double(),
-  HeartWeight = col_double()
-)</code></pre>
+<p>Let’s now use the <code>tidyverse</code> to <code>read_csv</code> the dataset <a href="https://vincentarelbundock.github.io/Rdatasets/doc/MASS/cats.html">Anatomical Data from Domestic Cats</a> into a <code>tibble</code>. The first thing you will notice is that the <code>tidyverse</code> has printed out some useful information.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Did you load tidyverse? library(tidyverse)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>cats <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/Bristol-Training/intermediate-r/refs/heads/main/data/cats.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 144 Columns: 3
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (1): Sex
+dbl (2): BodyWeight, HeartWeight
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
 <p>This is telling you that <code>read_csv</code> found three columns; <code>Sex</code>, which is treated as a columns of strings (characters), and <code>BodyWeight</code> and <code>HeartWeight</code>, which are both treated as columns of floating point numbers (doubles).</p>
 <p>Next, if you type <code>cats</code> and press return you will see</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>cats<span class="sc">$</span>Bodyweight</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<pre><code># A tibble: 144 x 3
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>cats</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 144 × 3
    Sex   BodyWeight HeartWeight
    &lt;chr&gt;      &lt;dbl&gt;       &lt;dbl&gt;
  1 F            2           7  
@@ -316,37 +308,94 @@ cols(
  8 F            2.1         8.2
  9 F            2.1         8.3
 10 F            2.1         8.5
-# … with 134 more rows</code></pre>
-<p>You can see that the <code>tibble</code> summarises itself to the screen. This makes it much easier to quickly look at some data without it overflowing your console.</p>
+# ℹ 134 more rows</code></pre>
+</div>
+</div>
+<p>that the <code>tibble</code> summarises itself to the screen. This makes it much easier to quickly look at some data without it overflowing your console.</p>
 <p>As a <code>tibble</code> is a <code>data.frame</code>, you can use the same methods of accessing data, e.g.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>cats<span class="sc">$</span>Bodyweight</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<pre><code>[1] 2.0 2.0 2.0 2.1 2.1 2.1 2.1 2.1 2.1 2.1 2.1 2.1 2.2
- [14] 2.2 2.2 2.2 2.2 2.2 2.3 2.3 2.3 2.3 2.3 2.3 2.3 2.3
- [27] 2.3 2.3 2.3 2.3 2.4 2.4 2.4 2.4 2.5 2.5 2.6 2.6 2.6
- [40] 2.7 2.7 2.7 2.9 2.9 2.9 3.0 3.0 2.0 2.0 2.1 2.2 2.2
- [53] 2.2 2.2 2.2 2.2 2.2 2.2 2.3 2.4 2.4 2.4 2.4 2.4 2.5
- [66] 2.5 2.5 2.5 2.5 2.5 2.5 2.5 2.6 2.6 2.6 2.6 2.6 2.6
- [79] 2.7 2.7 2.7 2.7 2.7 2.7 2.7 2.7 2.7 2.8 2.8 2.8 2.8
- [92] 2.8 2.8 2.8 2.9 2.9 2.9 2.9 2.9 3.0 3.0 3.0 3.0 3.0
-[105] 3.0 3.0 3.0 3.0 3.1 3.1 3.1 3.1 3.1 3.1 3.2 3.2 3.2
-[118] 3.2 3.2 3.2 3.3 3.3 3.3 3.3 3.3 3.4 3.4 3.4 3.4 3.4
-[131] 3.5 3.5 3.5 3.5 3.5 3.6 3.6 3.6 3.6 3.7 3.8 3.8 3.9
-[144] 3.9</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>cats[<span class="dv">1</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<pre><code># A tibble: 1 x 3
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>cats<span class="sc">$</span>BodyWeight</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] 2.0 2.0 2.0 2.1 2.1 2.1 2.1 2.1 2.1 2.1 2.1 2.1 2.2 2.2 2.2 2.2 2.2 2.2
+ [19] 2.3 2.3 2.3 2.3 2.3 2.3 2.3 2.3 2.3 2.3 2.3 2.3 2.4 2.4 2.4 2.4 2.5 2.5
+ [37] 2.6 2.6 2.6 2.7 2.7 2.7 2.9 2.9 2.9 3.0 3.0 2.0 2.0 2.1 2.2 2.2 2.2 2.2
+ [55] 2.2 2.2 2.2 2.2 2.3 2.4 2.4 2.4 2.4 2.4 2.5 2.5 2.5 2.5 2.5 2.5 2.5 2.5
+ [73] 2.6 2.6 2.6 2.6 2.6 2.6 2.7 2.7 2.7 2.7 2.7 2.7 2.7 2.7 2.7 2.8 2.8 2.8
+ [91] 2.8 2.8 2.8 2.8 2.9 2.9 2.9 2.9 2.9 3.0 3.0 3.0 3.0 3.0 3.0 3.0 3.0 3.0
+[109] 3.1 3.1 3.1 3.1 3.1 3.1 3.2 3.2 3.2 3.2 3.2 3.2 3.3 3.3 3.3 3.3 3.3 3.4
+[127] 3.4 3.4 3.4 3.4 3.5 3.5 3.5 3.5 3.5 3.6 3.6 3.6 3.6 3.7 3.8 3.8 3.9 3.9</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>cats[<span class="dv">1</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
   Sex   BodyWeight HeartWeight
   &lt;chr&gt;      &lt;dbl&gt;       &lt;dbl&gt;
 1 F              2           7</code></pre>
-<p>etc.</p>
-<blockquote class="blockquote">
-<p>EXERCISE</p>
-<p>Load the cats data set into a <code>tibble</code> using <code>read_csv</code>. Use the <code>calculate_mean</code> and <code>calculate_max</code> functions from before to calculate the mean and max body weight and heart weight of the cats.</p>
-<p>What are the units for the weights? A description of the data set can be <a href="https://vincentarelbundock.github.io/Rdatasets/doc/MASS/cats.html">found here</a>.</p>
-<p><a href="tidyverse_answer02.html">Answer</a></p>
-</blockquote>
+</div>
+</div>
+<div id="exerciseN" class="callout callout-style-default callout-note no-icon callout-titled" title="Exercise">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Load the cats data set into a <code>tibble</code> using <code>read_csv</code>. Use the <code>mean</code> and <code>max</code> functions to calculate the mean and max body weight and heart weight of the cats.</p>
+<p>Note that according to <a href="https://vincentarelbundock.github.io/Rdatasets/doc/MASS/cats.html">this dataset description</a> the body weight is in kilograms and the heart weight is in grams. As is normal for real-world data, there is little consistency in units.</p>
+</div>
+</div>
+<div id="answerN" class="callout callout-style-default callout-caution no-icon callout-titled" title="Answer">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>cats <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/Bristol-Training/intermediate-r/refs/heads/main/data/cats.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 144 Columns: 3
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (1): Sex
+dbl (2): BodyWeight, HeartWeight
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>mean_body_weight <span class="ot">&lt;-</span> <span class="fu">mean</span>(cats<span class="sc">$</span>BodyWeight)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>max_body_weight <span class="ot">&lt;-</span> <span class="fu">max</span>(cats<span class="sc">$</span>BodyWeight)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>( <span class="fu">sprintf</span>(<span class="st">"Body weight: mean = %.2f kg, max = %.2f kg</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>             mean_body_weight, max_body_weight) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Body weight: mean = 2.72 kg, max = 3.90 kg</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>( <span class="st">"Heart Weight: mean = "</span>,</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mean</span>(cats<span class="sc">$</span>HeartWeight) <span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="at">digits=</span><span class="dv">2</span>),</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>      <span class="st">"g, max ="</span>,</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>      <span class="fu">max</span>(cats<span class="sc">$</span>HeartWeight) <span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="at">digits=</span><span class="dv">2</span>),</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>      <span class="st">"g</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Heart Weight: mean =  10.63 g, max = 20.5 g</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
