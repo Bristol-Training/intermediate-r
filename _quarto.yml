@@ -27,7 +27,6 @@ website:
         contents:
           - "pages/041-tidyverse-tibbles.qmd"
           - "pages/042-tidyverse-pipe.qmd"
-          - "pages/043-tidyverse-exercise.qmd"
       - "pages/070-worksheet.qmd"
       - "pages/980-summary.qmd"
       - "pages/990-contributors.qmd"
