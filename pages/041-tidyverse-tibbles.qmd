@@ -1,0 +1,123 @@
+---
+title: Tibbles
+---
+
+
+
+
+## Loading the tidyverse
+
+
+```r
+library(tidyverse)
+```
+
+
+## Tibbles and readr
+
+We will learn and use the tidyverse in much more depth in future 
+workshops. For today, we will look at `tibble`. A `tibble` is the
+modern tidyverse version of a `data.frame`. A `tibble` is a `data.frame`,
+and so can be used in the same way. But it comes with more powerful
+features and removes inconsistent and confusing behaviour.
+
+In the same way, `readr` provides modern tidyverse replacements 
+for R's standard reading functions. `readr` provides `read_csv`,
+which is a better way of reading csv files than R's standard
+`read.csv`.
+
+Let's now use the tidyverse to `read_csv` the cats data set
+into a `tibble`.
+
+```r
+cats <- read_csv("https://chryswoods.com/intermediate_r/data/cats.csv")
+```
+
+The first thing you will notice is that the tidyverse has printed
+out some useful information;
+
+```
+Parsed with column specification:
+cols(
+  Sex = col_character(),
+  BodyWeight = col_double(),
+  HeartWeight = col_double()
+)
+```
+
+This is telling you that `read_csv` found three columns; `Sex`, which 
+is treated as a columns of strings (characters), and 
+`BodyWeight` and `HeartWeight`, which are both treated as columns
+of floating point numbers (doubles).
+
+Next, if you type `cats` and press return...
+
+```r
+cats
+# A tibble: 144 x 3
+   Sex   BodyWeight HeartWeight
+   <chr>      <dbl>       <dbl>
+ 1 F            2           7  
+ 2 F            2           7.4
+ 3 F            2           9.5
+ 4 F            2.1         7.2
+ 5 F            2.1         7.3
+ 6 F            2.1         7.6
+ 7 F            2.1         8.1
+ 8 F            2.1         8.2
+ 9 F            2.1         8.3
+10 F            2.1         8.5
+# … with 134 more rows
+```
+
+You can see that the `tibble` summarises itself to the screen. 
+This makes it much easier to quickly look at some data without 
+it overflowing your console.
+
+As a `tibble` is a `data.frame`, you can use the same methods
+of accessing data, e.g.
+
+```r
+cats$Bodyweight
+```
+
+```
+[1] 2.0 2.0 2.0 2.1 2.1 2.1 2.1 2.1 2.1 2.1 2.1 2.1 2.2
+ [14] 2.2 2.2 2.2 2.2 2.2 2.3 2.3 2.3 2.3 2.3 2.3 2.3 2.3
+ [27] 2.3 2.3 2.3 2.3 2.4 2.4 2.4 2.4 2.5 2.5 2.6 2.6 2.6
+ [40] 2.7 2.7 2.7 2.9 2.9 2.9 3.0 3.0 2.0 2.0 2.1 2.2 2.2
+ [53] 2.2 2.2 2.2 2.2 2.2 2.2 2.3 2.4 2.4 2.4 2.4 2.4 2.5
+ [66] 2.5 2.5 2.5 2.5 2.5 2.5 2.5 2.6 2.6 2.6 2.6 2.6 2.6
+ [79] 2.7 2.7 2.7 2.7 2.7 2.7 2.7 2.7 2.7 2.8 2.8 2.8 2.8
+ [92] 2.8 2.8 2.8 2.9 2.9 2.9 2.9 2.9 3.0 3.0 3.0 3.0 3.0
+[105] 3.0 3.0 3.0 3.0 3.1 3.1 3.1 3.1 3.1 3.1 3.2 3.2 3.2
+[118] 3.2 3.2 3.2 3.3 3.3 3.3 3.3 3.3 3.4 3.4 3.4 3.4 3.4
+[131] 3.5 3.5 3.5 3.5 3.5 3.6 3.6 3.6 3.6 3.7 3.8 3.8 3.9
+[144] 3.9
+```
+
+```r
+cats[1,]
+```
+
+```
+# A tibble: 1 x 3
+  Sex   BodyWeight HeartWeight
+  <chr>      <dbl>       <dbl>
+1 F              2           7
+```
+
+etc.
+
+> EXERCISE
+>
+> Load the cats data set into a `tibble` using `read_csv`.
+> Use the `calculate_mean` and `calculate_max` functions
+> from before to calculate the mean and max body weight
+> and heart weight of the cats.
+>
+> What are the units for the weights? A description of the
+> data set can be [found here](https://vincentarelbundock.github.io/Rdatasets/doc/MASS/cats.html).
+>
+> [Answer](tidyverse_answer02.html)
+

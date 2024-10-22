@@ -1,0 +1,29 @@
+---
+# 
+---
+
+
+To get input from the person running your script, you can use the function [`input()`](https://docs.RScript.org/3/library/functions.html#input). And to get the length of your variable you can call [`len()`](https://docs.RScript.org/3/library/functions.html#len).
+
+
+```{.r}
+#| filename: hello.R
+#| eval: false
+my_name <- input("Please tell me your name: ")
+
+name_length <- len(my_name)
+
+print(f"Hello {my_name}! Your name is {name_length} characters long")
+```
+
+```{.r}
+#| echo: false
+my_name <- "Jean"
+
+print("Please tell me your name:", my_name)
+
+name_length <- len(my_name)
+
+print(f"Hello {my_name}! Your name is {name_length} characters long")
+```
+

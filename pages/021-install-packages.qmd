@@ -1,0 +1,75 @@
+---
+title: Installing packages
+---
+
+
+For example, the [Stringr](https://cran.r-project.org/web/packages/stringr/index.html)
+package provides a set of modern functions for manipulating and 
+formatting strings.
+
+To use `Stringr`, we first need to install the package. You install
+packages in R using `install.packages`, e.g. type into your console;
+
+```r
+install.packages("stringr")
+```
+
+and hit return. If your user account has permission to install packages then
+you should see something like;
+
+```
+trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/stringr_1.4.0.tgz'
+Content type 'application/x-gzip' length 210650 bytes (205 KB)
+==================================================
+downloaded 205 KB
+
+
+The downloaded binary packages are in
+	/var/folders/vg/lyxsq9391fxfm64hfdfr88f40000gq/T//Rtmp57uUY0/downloaded_packages
+```
+
+Notice that this will automatically get the right package for your operating
+system (in my case `macosx`). Also note that you only have to do this once,
+as once installed, this package is available for everyone.
+
+
+
+
+## Updating packages
+
+R's strength is its packages, and what makes this easier is that
+package management is handled directly within the language.
+
+You can update a package by running `install.packages` again, e.g.
+to update `stringr` to the newest version, just type;
+
+```r
+install.packages("stringr")
+```
+
+You can get a list of all installed packages via `installed.packages()`,
+e.g.
+
+```r
+installed.packages()
+```
+
+You can get a list of all packages for which new versions are available
+using `old.packages()`, e.g.
+
+```r
+old.packages()
+```
+
+You can update all packages for which updates are available using
+`update.packages()`. Set `ask=FALSE` to update everything
+without prompting, e.g.
+
+```r
+update.packages(ask=FALSE)
+```
+
+Note that updating all of your packages could take a while if you haven't
+done it recently...
+
+
