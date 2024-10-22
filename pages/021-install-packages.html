@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Installing packages – Intermediate R</title>
+<title>Installing CRAN packages – Intermediate R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -115,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/020-packages.html">Packages</a></li><li class="breadcrumb-item"><a href="../pages/021-install-packages.html">Installing packages</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/020-packages.html">Packages</a></li><li class="breadcrumb-item"><a href="../pages/021-install-packages.html">Installing CRAN packages</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -167,7 +167,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/021-install-packages.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Installing packages</span></a>
+ <span class="menu-text">Installing CRAN packages</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -225,7 +225,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/043-tidyverse-exercise.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Tidyverse exercise</span></a>
+ <span class="menu-text">exercise</span></a>
   </div>
 </li>
       </ul>
@@ -265,9 +265,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/020-packages.html">Packages</a></li><li class="breadcrumb-item"><a href="../pages/021-install-packages.html">Installing packages</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/020-packages.html">Packages</a></li><li class="breadcrumb-item"><a href="../pages/021-install-packages.html">Installing CRAN packages</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Installing packages</h1>
+<h1 class="title">Installing CRAN packages</h1>
 </div>
 
 
@@ -284,31 +284,75 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>For example, the <a href="https://cran.r-project.org/web/packages/stringr/index.html">Stringr</a> package provides a set of modern functions for manipulating and formatting strings.</p>
-<p>To use <code>Stringr</code>, we first need to install the package. You install packages in R using <code>install.packages</code>, e.g.&nbsp;type into your console;</p>
+<p>CRAN packages can be easily installed using the <code>install.packages</code> function. For example, the <a href="https://cran.r-project.org/web/packages/stringr/index.html"><code>stringr</code></a> package provides a set of modern functions for manipulating and formatting strings.</p>
+<p>To use <code>stringr</code>, we first need to install the package typing into your script or console:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"stringr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>and hit return. If your user account has permission to install packages then you should see something like;</p>
-<pre><code>trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/stringr_1.4.0.tgz'
-Content type 'application/x-gzip' length 210650 bytes (205 KB)
+<p>and click <code>run</code> or hit return, respectively. If your user account has permission to install packages then you should see something like:</p>
+<pre><code>trying URL 'https://cloud.r-project.org/bin/macosx/big-sur-arm64/contrib/4.4/stringr_1.5.1.tgz'
+Content type 'application/x-gzip' length 314273 bytes (306 KB)
 ==================================================
-downloaded 205 KB
-
+downloaded 306 KB
 
 The downloaded binary packages are in
-    /var/folders/vg/lyxsq9391fxfm64hfdfr88f40000gq/T//Rtmp57uUY0/downloaded_packages</code></pre>
-<p>Notice that this will automatically get the right package for your operating system (in my case <code>macosx</code>). Also note that you only have to do this once, as once installed, this package is available for everyone.</p>
+    /var/folders/bq/2w1p57q54r78thfjpfy2cbrc0000gp/T//RtmpQ8lR4N/downloaded_packages</code></pre>
+<p>Notice that this will automatically get the right package for your operating system (in this example <code>macosx</code>). Also note that you <em>only have to do this once</em>, as once installed, this package is already available. If you have permission issues installing new packages in your system, you can try installing them in your user space with</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"stringr"</span>, <span class="at">lib=</span><span class="st">"/Users/ab12345/rlib"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>where <code>/Users/ab12345/rlib</code> is a folder in your user space; or contact your IT service for help.</p>
 <section id="updating-packages" class="level3">
 <h3 class="anchored" data-anchor-id="updating-packages">Updating packages</h3>
-<p>R’s strength is its packages, and what makes this easier is that package management is handled directly within the language.</p>
-<p>You can update a package by running <code>install.packages</code> again, e.g. to update <code>stringr</code> to the newest version, just type;</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"stringr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>R package management is handled directly within the language, what makes makes easier to install packages and keep them up to date.</p>
+<p>To update a package you can simply run <code>install.packages</code> again, e.g.&nbsp;to update <code>stringr</code> to the newest version, just type:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"stringr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You can get a list of all installed packages via <code>installed.packages()</code>, e.g.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">installed.packages</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># note that we are printing only a few of them</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">installed.packages</span>()[<span class="dv">10</span><span class="sc">:</span><span class="dv">30</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "bslib"      "cachem"     "callr"      "cellranger" "class"     
+ [6] "cli"        "clipr"      "cluster"    "codetools"  "colorspace"
+[11] "compiler"   "conflicted" "cpp11"      "crayon"     "curl"      
+[16] "data.table" "datasets"   "DBI"        "dbplyr"     "digest"    
+[21] "dplyr"     </code></pre>
+</div>
+</div>
 <p>You can get a list of all packages for which new versions are available using <code>old.packages()</code>, e.g.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">old.packages</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>You can update all packages for which updates are available using <code>update.packages()</code>. Set <code>ask=FALSE</code> to update everything without prompting, e.g.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">update.packages</span>(<span class="at">ask=</span><span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Note that updating all of your packages could take a while if you haven’t done it recently…</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">old.packages</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>           Installed  Built   ReposVer  Repository                            
+boot       "1.3-30"   "4.4.0" "1.3-31"  "https://cran.rstudio.com/src/contrib"
+foreign    "0.8-86"   "4.4.0" "0.8-87"  "https://cran.rstudio.com/src/contrib"
+glue       "1.7.0"    "4.4.0" "1.8.0"   "https://cran.rstudio.com/src/contrib"
+KernSmooth "2.23-22"  "4.4.0" "2.23-24" "https://cran.rstudio.com/src/contrib"
+MASS       "7.3-60.2" "4.4.0" "7.3-61"  "https://cran.rstudio.com/src/contrib"
+Matrix     "1.7-0"    "4.4.0" "1.7-1"   "https://cran.rstudio.com/src/contrib"
+nlme       "3.1-164"  "4.4.0" "3.1-166" "https://cran.rstudio.com/src/contrib"
+survival   "3.5-8"    "4.4.0" "3.7-0"   "https://cran.rstudio.com/src/contrib"</code></pre>
+</div>
+</div>
+<p>You can update all packages for which updates are available using <code>update.packages()</code>. You can add the option <code>update.packages(ask=FALSE)</code> to update everything without prompting. Note that updating all of your packages could take a while if you haven’t done it recently.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">update.packages</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>boot :
+ Version 1.3-30 installed in /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library 
+ Version 1.3-31 available at https://cran.rstudio.com
+Update? (Yes/no/cancel)</code></pre>
+</div>
+</div>
+<div id="keypointsN" class="callout callout-style-default callout-tip no-icon callout-titled" title="Updates and reproducibility">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Updates and reproducibility
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Software updates can pose challenges for reproducibility. It’s important to document and track the specific versions of software and packages used. <code>renv</code> is a package management tool for R that helps create reproducible environments.</p>
+</div>
+</div>
 
 
 </section>
@@ -406,7 +450,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/Bristol-Training\.github\.io\/intermediate-r\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

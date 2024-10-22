@@ -167,7 +167,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/021-install-packages.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Installing packages</span></a>
+ <span class="menu-text">Installing CRAN packages</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -225,7 +225,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/043-tidyverse-exercise.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Tidyverse exercise</span></a>
+ <span class="menu-text">exercise</span></a>
   </div>
 </li>
       </ul>
@@ -259,7 +259,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#using-a-package" id="toc-using-a-package" class="nav-link active" data-scroll-target="#using-a-package">Using a package</a></li>
-  <li><a href="#cran" id="toc-cran" class="nav-link" data-scroll-target="#cran">CRAN</a></li>
   </ul>
 </nav>
     </div>
@@ -308,16 +307,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>EXERCISE</p>
 <p>Use <code>?</code> to learn about the above <code>stringr</code> functions and have a play printing different strings to the console.</p>
 <p><a href="packages_answer01.html">Answer</a></p>
-</blockquote>
-</section>
-<section id="cran" class="level3">
-<h3 class="anchored" data-anchor-id="cran">CRAN</h3>
-<p>The power of R comes from its great wealth of excellent packages. These packages are managed in a central repository called <a href="https://cran.r-project.org">CRAN</a> (the Comprehensive R Archive Network). There are very strict protocols to follow to publish a package in CRAN, which includes an external review stage. As such, publishing an R package is a lot like publishing a paper, and so R packages on CRAN are mostly of a high standard, and come complete with documentation and tests. You can get an idea of what is needed to publish a package on CRAN by reading <a href="https://r-pkgs.org">R Packages</a> by Hadley Wickham and Jennifer Bryan. This excellent online book provides complete detail of how to write and publish an R package.</p>
-<p>A good way to find the package you want is to use an R search service, such as <a href="https://rseek.org">rseek</a>. You can search for individual package names, or even the kind of thing you want to do. As most R packages come with vignettes (web pages that show examples of how to use the package) this means you can quickly find both the package that achieves your goal, plus really clear documentation and examples.</p>
-<blockquote class="blockquote">
-<p>EXERCISE</p>
-<p>Use <a href="https://rseek.org">rseek</a> to look for packages that help you calculate Pearson’s product-moment correlation. Limit the search to vignettes. Can you find a vignette that shows you how to do this? Do not worry that the R in the vignette is more advanced than you’ve seen so far - it won’t be long before it will make sense ;-)</p>
-<p><a href="packages_answer02.html">Answer</a></p>
 </blockquote>
 
 
@@ -416,7 +405,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/Bristol-Training\.github\.io\/intermediate-r\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -746,8 +735,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../pages/021-install-packages.html" class="pagination-link" aria-label="Installing packages">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Installing packages</span>
+      <a href="../pages/021-install-packages.html" class="pagination-link" aria-label="Installing CRAN packages">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Installing CRAN packages</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

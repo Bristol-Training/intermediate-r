@@ -166,7 +166,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./pages/021-install-packages.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Installing packages</span></a>
+ <span class="menu-text">Installing CRAN packages</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -224,7 +224,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./pages/043-tidyverse-exercise.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Tidyverse exercise</span></a>
+ <span class="menu-text">exercise</span></a>
   </div>
 </li>
       </ul>
@@ -283,8 +283,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Welcome to this second course on R programming! This course builds upon Beginning R and delves deeper into working with advanced data structures, write functions, explore modules, and how to handle errors and exceptions. Get ready to take your R skills to the next level!</p>
-<p>For the purpose of this course we will be using a free tool called JupyterLab which provides you with a local editor and R terminal in your web browser. Setting up instructions can be found <a href="&quot;pages/010-workspace-setup.qmd&quot;">here</a>.</p>
+<p>Welcome to this second course on R programming! This course builds upon Beginning R and delves deeper into installing and using packages, working with and write functions, and using <code>tidyverse</code> for data analysis. Get ready to take your R skills to the next level!</p>
+<p>For the purpose of this course we will be using RStudio which provides you with a text editor and R console. Setting up instructions can be found <a href="&quot;pages/010-workspace-setup.qmd&quot;">here</a>.</p>
 <section id="intended-learning-outcomes" class="level4">
 <h4 class="anchored" data-anchor-id="intended-learning-outcomes">Intended learning outcomes</h4>
 <p>By the end of this course, you will:</p>
@@ -292,8 +292,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Feel confident installing and using packages</li>
 <li>Know how to write functions</li>
 <li>Be familiar with <code>tydiverse</code> ecosystem</li>
-<li>Know how to read data files</li>
-<li>Know how to filter and transform data</li>
+<li>Know how to read, filter and transform data files</li>
 <li>Know how to generate simple plots</li>
 </ul>
 </section>
@@ -470,7 +469,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/Bristol-Training\.github\.io\/intermediate-r\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

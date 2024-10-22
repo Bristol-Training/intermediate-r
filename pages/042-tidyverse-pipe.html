@@ -167,7 +167,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/021-install-packages.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Installing packages</span></a>
+ <span class="menu-text">Installing CRAN packages</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -225,7 +225,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/043-tidyverse-exercise.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Tidyverse exercise</span></a>
+ <span class="menu-text">exercise</span></a>
   </div>
 </li>
       </ul>
@@ -278,18 +278,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>The tidyverse makes heavy use of the R concept of forward pipes. Forward pipes, represented via <code>%&gt;%</code>, are provided by the <a href="https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html">magrittr</a> package, which should be automatically loaded by the tidyverse.</p>
-<p>(if not, you can load it via <code>load.packages("magrittr")</code>)</p>
+<p>The <code>tidyverse</code> makes heavy use of the R concept of forward pipes. Forward pipes, represented via <code>%&gt;%</code>, are provided by the <a href="https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html">magrittr</a> package, which should be automatically loaded by the tidyverse.</p>
 <p>A forward pipe forwards the variable on the left into the first argument to the function on the right, e.g.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="st">"kitten"</span> <span class="sc">%&gt;%</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>will forward the string “kitten” so that it is the first argument to the function <code>print</code>. Hence this is exactly identical to</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"kitten"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>and so</p>
-<pre><code>[1] "kitten"</code></pre>
-<p>is printed.</p>
-<p>You may ask why this is useful? It is useful because it enables you to chain together a lot of functions. For example, the tidyverse <a href="https://dplyr.tidyverse.org">dply</a> package provides the function <code>filter</code>, for filtering data.</p>
+<p>You may ask why this is useful? It is useful because it enables you to chain together a lot of functions. For example, the <code>tidyverse</code> <a href="https://dplyr.tidyverse.org">dply</a> package provides the function <code>filter</code>, for filtering data.</p>
 <p>So;</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>cats <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Sex<span class="sc">==</span><span class="st">"F"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>cats <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Sex<span class="sc">==</span><span class="st">"F"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code># A tibble: 47 x 3
    Sex   BodyWeight HeartWeight
    &lt;chr&gt;      &lt;dbl&gt;       &lt;dbl&gt;
@@ -306,9 +302,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 # … with 37 more rows</code></pre>
 <p>has filtered the cats data set from the last page to return a <code>tibble</code> that contains data only for female cats.</p>
 <p>This was identical to typing;</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(cats, Sex<span class="sc">==</span><span class="st">"F"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(cats, Sex<span class="sc">==</span><span class="st">"F"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The power comes that we can now chain filters, e.g.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>cats <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Sex<span class="sc">==</span><span class="st">"F"</span>) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(BodyWeight <span class="sc">&gt;</span> <span class="fl">2.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>cats <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Sex<span class="sc">==</span><span class="st">"F"</span>) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(BodyWeight <span class="sc">&gt;</span> <span class="fl">2.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code># A tibble: 11 x 3
    Sex   BodyWeight HeartWeight
    &lt;chr&gt;      &lt;dbl&gt;       &lt;dbl&gt;
@@ -324,10 +320,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 10 F            3          10.6
 11 F            3          13  </code></pre>
 <p>We can then use the <a href="https://dplyr.tidyverse.org">dplyr</a> <code>summarise</code> function to call <code>calculate_mean</code> on a specified row of this filtered data, e.g.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>cats <span class="sc">%&gt;%</span> </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Sex<span class="sc">==</span><span class="st">"F"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(BodyWeight<span class="sc">&gt;</span><span class="fl">2.5</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">mean=</span><span class="fu">calculate_mean</span>(HeartWeight))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>cats <span class="sc">%&gt;%</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Sex<span class="sc">==</span><span class="st">"F"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(BodyWeight<span class="sc">&gt;</span><span class="fl">2.5</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">mean=</span><span class="fu">calculate_mean</span>(HeartWeight))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>will output</p>
 <pre><code># A tibble: 1 x 1
    mean
@@ -336,10 +332,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>as the mean average of the heart weight in grams of female cats whose body weight is greater than 2.5 kg.</p>
 <p>Note how we have split this over multiple lines, putting the forward pipe <code>%&gt;%</code> at the end so that it is clear that the line continues (use Shift+Enter to start a new line without running the command in the R Console).</p>
 <p>To save this to a variable, we would use the assign <code>&lt;-</code> as normal, hence the full code should be;</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>average_heart_weight <span class="ot">&lt;-</span> cats <span class="sc">%&gt;%</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Sex<span class="sc">==</span><span class="st">"F"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(BodyWeight<span class="sc">&gt;</span><span class="fl">2.5</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">mean=</span><span class="fu">calculate_mean</span>(HeartWeight))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>average_heart_weight <span class="ot">&lt;-</span> cats <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Sex<span class="sc">==</span><span class="st">"F"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(BodyWeight<span class="sc">&gt;</span><span class="fl">2.5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">mean=</span><span class="fu">calculate_mean</span>(HeartWeight))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Yes, this is a very dense bit of code. This is typical for R. You will often see very dense blocks of code that use forward pipes to push data through several functions, resulting in a final output result. As you can see, it is important that you name your variables, data, columns and functions clearly, so that it is easier for future readers of your code to understand what is going on.</p>
 <p>Finally, note that <code>average_heart_weight</code> is a 1x1 <code>tibble</code>. You can extract the actual numeric value by typing <code>as.numeric(average_heart_weight)</code>.</p>
 <blockquote class="blockquote">
@@ -446,7 +442,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/Bristol-Training\.github\.io\/intermediate-r\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -781,8 +777,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../pages/043-tidyverse-exercise.html" class="pagination-link" aria-label="Tidyverse exercise">
-        <span class="nav-page-text">Tidyverse exercise</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../pages/043-tidyverse-exercise.html" class="pagination-link" aria-label="exercise">
+        <span class="nav-page-text">exercise</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
