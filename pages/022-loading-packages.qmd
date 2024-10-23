@@ -1,51 +1,48 @@
 ---
-title: Loading packages
+title: Using packages
 ---
 
 
+Once installed, packages are loaded into the R environment using the function `library()`. For example, to use `stringr` you should type:
 
-
-## Using a package
-
-You can use a package in your script via the `library` command. To use
-`stringr` you should type;
-
-```r
+```{r}
 library(stringr)
 ```
 
-into the console. When you press return, nothing should happen. If you see
-output similar to;
+If you see output similar to;
 
 ```
 Error in library(stringr) : there is no package called ‘stringr’
 ```
 
-then this means that `stringr` is not installed properly.
+then this means that `stringr` is not installed properly. Try installing it again with `install.packages("stringr")`.
 
-To get help on a package type `?` before its name, e.g.
+To get help on a package type `?` followed by its name, e.g.
 
 ```r
 ?stringr
 ```
 
-All of the functions in `stringr` start with `str_` and take 
-a string (or vector/list of strings) as the first argument.
+You can also look for the *vignette* documentation and examples typing
 
-Key functions are;
+```r
+vignette("stringr")
+```
 
-* `str_c` : Modern replacement for `cat`
-* `str_length` : Count the number of characters in a string
-* `str_sub` : Extract substrings
-* `str_trim` : Remove trailing and leading whitespace
-* `str_pad` : Pad a string
-* `str_wrap` : Wrap a string into a paragraph
+::: {#exerciseN .callout-note icon=false title='Exercise'}
+Learn more about the package`stringr` exploring its *vigenette*.
+:::
 
-> EXERCISE
->
-> Use `?` to learn about the above `stringr` functions and have a play
-> printing different strings to the console.
->
-> [Answer](packages_answer01.html)
+::: {#answerN .callout-caution icon=false title='Answer' collapse="true"}
+  
+
+```r
+vignette("stringr")
+```
+
+![](../assets/stringr.png "Stringr vignette")
+
+:::
+
 
 

@@ -3,11 +3,10 @@ title: Summary
 ---
 
 
-That's all we have for this workshop. By now you should have a better understanding of how you can make your code more easily shared and reusable. In this workshow we have covered:
+That's all we have for this workshop. By now you should have a better understanding of how you can make your code more easily shared, reusable and *tidy*. In this workshow we have covered:
 
-- Using the R libraries and use their functions
-- Ways of bundling up your code into reusable units with functions
-- Making it possible to share your code with others by moving code into modules
-- How to produce custom errors
-- How to compactly generate lists with list comprehensions
-
+- Search for and install R packages
+- Using R packages and their functions
+- Writing your own functions
+- Error handling in functions
+- Write *tidy* code to work with *tidy* data with `tidyverse`

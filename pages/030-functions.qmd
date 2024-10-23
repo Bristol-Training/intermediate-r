@@ -3,98 +3,60 @@ title: Functions
 ---
 
 
-You are likely already comfortable with *calling functions* such as:
+A core building block of all programming languages is a function. A function is a reusable block of code that can be used over and over again in your program. A function takes inputs (called arguments), it then does something to those inputs to produce some outputs, which are returned to you.
 
-- free functions like `print()` and `range()`
+You've already used many functions. Let's look at, for example, this snippet of code
 
-In this section we're going to explore other functions and methods available as part of R's core capabilities and in other modules. An important technical resource you probably will come across often is [The R Standard Library](https://docs.RScript.org/3/library/).
 
-## Built-in functions
 
-R comes with a bunch of functionality that you can use without having to explicitly enable anything. This includes things like integers, strings, lists, `print()`ing, file `open()`ing etc.
-
-First, lets have a peek at the *built-in functions*. There is a page describing these under the "Library Reference", in a page called [Built-in Functions](https://docs.RScript.org/3/library/functions.html). There we find the documentation for many of the functions we've already been using, for example [`print()`](https://docs.RScript.org/3/library/functions.html#print) and [`max()`](https://docs.RScript.org/3/library/functions.html#max).
-
-It is worth, over time, becoming familiar with the various functions that are available. Some are quite useful for everyday work and some are more niche.
-
-::: {#exercise-1 .callout-note title="Exercise" icon=false} 
-
-Copy the following code into a new script `hello.R`:
-
-```rScript
-my_name <- ...
-
-name_length <- ...
-
-print(f"Hello {my_name}! Your name is {name_length} characters long")
+```{r}
+library(stringr)
+hello <- "Hello, R!"
+length <- str_length(hello)
+cat(hello, "- has", length, "characters") 
 ```
 
-Replace the first `...` with a call to a built-in function which will read *input* from the person running the script.
-Replace the second `...` with a call to a function which will give the *length* of the string `my_name`. When executed, the script should print out:
+This code has three functions:
 
-```
-Please tell me your name: Jean
-Hello Jean! Your name is 4 characters long
-```
+* `library` : This function loads the package passed as the argument, e.g. `library(stringr)` loads the `stringr` package
+* `str_length` : This function calculates the number of characters in the string passed in as the argument, returning the number of characters. When input the value of `hello` (namely `Hello R`) it returns the number `7`.
+* `cat` : This prints its arguments to the screen, *returning nothing*.
 
-If you need it, you can search through the [built-in functions page](https://docs.RScript.org/3/library/functions.html) to find the appropriate functions.
+
+**All** of the functions in `stringr` start with `str_` and take a string (or vector/list of strings) as the first argument. Some other key functions are:
+
+* `str_c` : Modern replacement for `cat`
+* `str_length` : Count the number of characters in a string
+* `str_sub` : Extract substrings
+
+
+::: {#exerciseN .callout-note icon=false title='Exercise'}
+Use `?` to learn about the above `stringr` functions and have a play printing different strings to the console.
+:::
+
+::: {#answerN .callout-caution icon=false title='Answer' collapse="true"}
+
+For example, we can look at the function `str_c` with
+
+```r
+?str_c
+```
+![](../assets/str_c.png "Stringr str_c function")
+
+Using the below example dataframe, we compared the different behaviour of `cat` vs `str_c`
+```{r}
+df <- data.frame(
+  name = c("Jean", "Thomas", "Daniel"),
+  age = c(25, 30, 35),
+  is_student = c(TRUE, FALSE, FALSE)
+)
+```
+```{r}
+cat(df$name, "-", df$is_student)
+str_c(df$name, "-", df$is_student)
+```
 
 :::
 
-::: {#answer1 .callout-caution icon=false title='Answer' collapse="true"}
-{{< include ../answers/answer_hello_name.qmd >}}
-:::
-
-## Methods for built-in data types
-
-R has a bunch of built-in *data types*, the details of them all are on the page called [Built-in Types](https://docs.RScript.org/3/library/stdtypes.html). That is the place to go to check what you can do with a `str`, an `int`, a `list` or a `dict`. There's also a few other built-in types you might want to look into in the future such as `complex`, `set` and `tuple`.
-
-These types being built-in means that you don't need to explicitly enable their use and most have core-language syntax to create them.
-
-For example, the code
-
-```{.r}
-animal <- "horse"
-```
-
-creates a variable called `animal` from the string literal `"horse"` which is of the type `str`. This data type is built into the language and so the functionality that it has is documented on [built-in type `str`](https://docs.RScript.org/3/library/stdtypes.html#text-sequence-type-str).
-
-This means that when we do:
-
-```rScript
-animal.capitalize()
-```
-
-it is looking at the data type of the variable `animal`, seeing that it is a `str` and then using the `capitalize` function that's available for that type to do the work.
-
-::: {#exercise2 .callout-tip title="Exercise" icon=false} 
-Have a look at the documentation page for the [functions that you can call on strings](https://docs.RScript.org/3/library/stdtypes.html#string-methods).
-
-Experiment with one or two and see if you can understand the documentation. Start by trying to answer the following:
-
-1. Given a string like `s <- "what is your name"`, find a function which can split `s` into a list like `["what", "is", "your", "name"]`
-2. Given a list like `["a", "b", "c"]`, find a function which can join it together into a string like `"a-b-c"`
-
-:::
-
-::: {#answer2 .callout-caution icon=false title='Answer' collapse="true"}
-{{< include ../answers/answer_string_methods.qmd >}}
-:::
 
 
-::: {#exercise3 .callout-note title="Exercise" icon=false} 
-Change the message in `encode.R` to use both upper and lower case letters:
-
-```rScript
-message <- "SOS We have hit an iceberg and need help quickly"
-```
-
-When you now run the script with `RScript encode.R` you will find that it gives you a `KeyError`. This is because it is looking for an upper case "S" in the dictionary `letter_to_morse` and not finding one (dictionary keys are case-sensitive).
-
-Read through the documentation for the [string methods](https://docs.RScript.org/3/library/stdtypes.html#string-methods) to find one that might help convert the letter you have into one that matches the keys in the dictionary. You should be able to add a single line of code in the loop straight after `for letter in message:`.
-
-:::
-
-::: {#answer3 .callout-caution icon=false title='Answer' collapse="true"}
-{{< include ../answers/answer_morse_case.qmd >}}
-:::

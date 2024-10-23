@@ -21,8 +21,8 @@ website:
           - "pages/022-loading-packages.qmd"
       - section: "pages/030-functions.qmd"
         contents:
-          - "pages/031-importing-functions.qmd"
           - "pages/032-writing-functions.qmd"
+          - "pages/033-error-functions.qmd"
       - section: "pages/040-tidyverse.qmd"
         contents:
           - "pages/041-tidyverse-tibbles.qmd"
