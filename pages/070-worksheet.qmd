@@ -2,45 +2,81 @@
 title: Worksheet
 ---
 
+We saw in [Beginning R](https://bristol-training.github.io/beginning-r/pages/060-data.html) how to load a dataser with `read.csv`. This was a study about [gene expression data of 42 ER- and ER+ breast cancer patients](https://ftp.ncbi.nlm.nih.gov/geo/datasets/GDS3nnn/GDS3716/soft/GDS3716.soft.gz). The code was like:
 
-This page contains a number of questions and exercises to give you a chance to practise what you have learned this session.
+```r
+breast <- read.csv("https://raw.githubusercontent.com/Bristol-Training/beginning-r/refs/heads/main/data/GDS3716.soft",
+            sep="\t",
+            skip=99)
+```
 
+**Using `tidyverse`**, answer the below exercises.
 
 ::: {#exercise-1 .callout-note title="Exercise 1" icon=false} 
+Read the dataset. You may want to look at the documentation for [`read_delim` function](https://readr.tidyverse.org/reference/read_delim.html). Remember specifying the separator character and number of lines you want to skip.
 :::
 
 ::: {#answer1 .callout-caution icon=false title='Answer 1' collapse="true"}
+```{r}
+library(tidyverse)
+
+breast <- read_delim("https://raw.githubusercontent.com/Bristol-Training/beginning-r/refs/heads/main/data/GDS3716.soft",
+            delim="\t",
+            skip=99)
+```
 :::
 
 
 
-::: {#exercise-2 .callout-note title="Exercise 2" icon=false} 
+::: {#exercise-2 .callout-note title="Exercise 2" icon=false}
+Calculate the average expresion levels for genes matching the name TP53.
 :::
 
 ::: {#answer2 .callout-caution icon=false title='Answer 2' collapse="true"}
+
+First we can filter the rows that match the gene name and remove the non-numeric columns.
+
+```{r}
+expr_tp53 <-
+    breast %>%
+        filter(IDENTIFIER=="TP53") %>%
+        select(!c(ID_REF, IDENTIFIER)) 
+
+expr_tp53
+```
+
+Now to calculate the mean of each one of the rows we can run
+```{r}
+expr_mean_tp53 <-
+    breast %>%
+        filter(IDENTIFIER=="TP53") %>%
+        select(!c(ID_REF, IDENTIFIER)) %>%
+        rowMeans()
+
+expr_mean_tp53
+```
+
 :::
 
 
 
 ::: {#exercise-3 .callout-note title="Exercise 3" icon=false} 
+Find the patient with the higher average expression levels accross the whole genome.
 :::
 
 ::: {#answer3 .callout-caution icon=false title='Answer 3' collapse="true"}
-:::
 
+```{r}
+max_idx <-
+    breast %>%
+        select(!c(ID_REF, IDENTIFIER))  %>%
+        colMeans(na.rm=TRUE) %>%
+        which.max()
 
+max_idx
 
-::: {#exercise-4 .callout-note title="Exercise 4" icon=false} 
-:::
+breast[,max_idx]
+```
 
-::: {#answer4 .callout-caution icon=false title='Answer 4' collapse="true"}
-:::
-
-
-
-::: {#exercise-5 .callout-note title="Exercise 5" icon=false} 
-:::
-
-::: {#answer5 .callout-caution icon=false title='Answer 5' collapse="true"}
 :::
 

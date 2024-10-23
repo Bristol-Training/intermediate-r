@@ -4,7 +4,7 @@ title: Introduction
 
 Welcome to this second course on R programming! This course builds upon Beginning R and delves deeper into installing and using packages, working with and write functions, and using `tidyverse` for data analysis. Get ready to take your R skills to the next level!
 
-For the purpose of this course we will be using RStudio which provides you with a text editor and R console. Setting up instructions can be found [here]("pages/010-workspace-setup.qmd").
+For the purpose of this course we will be using RStudio which provides you with a text editor and R console. Setting up instructions can be found [here](/pages/010-workspace-setup.qmd).
 
 ### Intended learning outcomes
 
@@ -13,8 +13,7 @@ By the end of this course, you will:
 - Feel confident installing and using packages
 - Know how to write functions
 - Be familiar with `tydiverse` ecosystem
-- Know how to read, filter and transform data files
-- Know how to generate simple plots
+- Know how to read, filter and transform data 
 
 
 ## How to read this documentation
