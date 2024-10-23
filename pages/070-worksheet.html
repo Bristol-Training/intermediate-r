@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -238,7 +272,11 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This page contains a number of questions and exercises to give you a chance to practise what you have learned this session.</p>
+<p>We saw in <a href="https://bristol-training.github.io/beginning-r/pages/060-data.html">Beginning R</a> how to load a dataser with <code>read.csv</code>. This was a study about <a href="https://ftp.ncbi.nlm.nih.gov/geo/datasets/GDS3nnn/GDS3716/soft/GDS3716.soft.gz">gene expression data of 42 ER- and ER+ breast cancer patients</a>. The code was like:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>breast <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://raw.githubusercontent.com/Bristol-Training/beginning-r/refs/heads/main/data/GDS3716.soft"</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">sep=</span><span class="st">"</span><span class="sc">\t</span><span class="st">"</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">skip=</span><span class="dv">99</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Using <code>tidyverse</code></strong>, answer the below exercises.</p>
 <div id="exercise-1" class="callout callout-style-default callout-note no-icon callout-titled" title="Exercise 1">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -249,7 +287,7 @@ Exercise 1
 </div>
 </div>
 <div class="callout-body-container callout-body">
-
+<p>Read the dataset. You may want to look at the documentation for <a href="https://readr.tidyverse.org/reference/read_delim.html"><code>read_delim</code> function</a>. Remember specifying the separator character and number of lines you want to skip.</p>
 </div>
 </div>
 <div id="answer1" class="callout callout-style-default callout-caution no-icon callout-titled" title="Answer 1">
@@ -264,7 +302,40 @@ Answer 1
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>breast <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">"https://raw.githubusercontent.com/Bristol-Training/beginning-r/refs/heads/main/data/GDS3716.soft"</span>,</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">delim=</span><span class="st">"</span><span class="sc">\t</span><span class="st">"</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">skip=</span><span class="dv">99</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: One or more parsing issues, call `problems()` on your data frame for details,
+e.g.:
+  dat &lt;- vroom(...)
+  problems(dat)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 22284 Columns: 44
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: "\t"
+chr  (2): ID_REF, IDENTIFIER
+dbl (42): GSM512539, GSM512540, GSM512541, GSM512542, GSM512543, GSM512544, ...
 
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -278,7 +349,7 @@ Exercise 2
 </div>
 </div>
 <div class="callout-body-container callout-body">
-
+<p>Calculate the average expresion levels for genes matching the name TP53.</p>
 </div>
 </div>
 <div id="answer2" class="callout callout-style-default callout-caution no-icon callout-titled" title="Answer 2">
@@ -293,7 +364,42 @@ Answer 2
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-
+<p>First we can filter the rows that match the gene name and remove the non-numeric columns.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>expr_tp53 <span class="ot">&lt;-</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    breast <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(IDENTIFIER<span class="sc">==</span><span class="st">"TP53"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(<span class="sc">!</span><span class="fu">c</span>(ID_REF, IDENTIFIER)) </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>expr_tp53</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 42
+  GSM512539 GSM512540 GSM512541 GSM512542 GSM512543 GSM512544 GSM512545
+      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+1     309.      256.      214.      368       560.      262.      190. 
+2       9.7      19.3       9.4       8.6      13.1       2.3       6.5
+# ℹ 35 more variables: GSM512546 &lt;dbl&gt;, GSM512547 &lt;dbl&gt;, GSM512548 &lt;dbl&gt;,
+#   GSM512549 &lt;dbl&gt;, GSM512550 &lt;dbl&gt;, GSM512551 &lt;dbl&gt;, GSM512552 &lt;dbl&gt;,
+#   GSM512553 &lt;dbl&gt;, GSM512554 &lt;dbl&gt;, GSM512555 &lt;dbl&gt;, GSM512556 &lt;dbl&gt;,
+#   GSM512575 &lt;dbl&gt;, GSM512576 &lt;dbl&gt;, GSM512577 &lt;dbl&gt;, GSM512578 &lt;dbl&gt;,
+#   GSM512579 &lt;dbl&gt;, GSM512580 &lt;dbl&gt;, GSM512566 &lt;dbl&gt;, GSM512567 &lt;dbl&gt;,
+#   GSM512568 &lt;dbl&gt;, GSM512569 &lt;dbl&gt;, GSM512570 &lt;dbl&gt;, GSM512571 &lt;dbl&gt;,
+#   GSM512572 &lt;dbl&gt;, GSM512573 &lt;dbl&gt;, GSM512574 &lt;dbl&gt;, GSM512557 &lt;dbl&gt;, …</code></pre>
+</div>
+</div>
+<p>Now to calculate the mean of each one of the rows we can run</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>expr_mean_tp53 <span class="ot">&lt;-</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    breast <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(IDENTIFIER<span class="sc">==</span><span class="st">"TP53"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(<span class="sc">!</span><span class="fu">c</span>(ID_REF, IDENTIFIER)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">rowMeans</span>()</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>expr_mean_tp53</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 310.89524  17.15714</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -307,7 +413,7 @@ Exercise 3
 </div>
 </div>
 <div class="callout-body-container callout-body">
-
+<p>Find the patient with the higher average expression levels accross the whole genome.</p>
 </div>
 </div>
 <div id="answer3" class="callout callout-style-default callout-caution no-icon callout-titled" title="Answer 3">
@@ -322,65 +428,36 @@ Answer 3
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>max_idx <span class="ot">&lt;-</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    breast <span class="sc">%&gt;%</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(<span class="sc">!</span><span class="fu">c</span>(ID_REF, IDENTIFIER))  <span class="sc">%&gt;%</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">colMeans</span>(<span class="at">na.rm=</span><span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">which.max</span>()</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>max_idx</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>GSM512562 
+       39 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>breast[,max_idx]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 22,284 × 1
+   GSM512560
+       &lt;dbl&gt;
+ 1    2612. 
+ 2     119. 
+ 3     186  
+ 4     806. 
+ 5      84.3
+ 6     648. 
+ 7     193. 
+ 8      88.4
+ 9      25.4
+10      78.6
+# ℹ 22,274 more rows</code></pre>
 </div>
 </div>
-</div>
-<div id="exercise-4" class="callout callout-style-default callout-note no-icon callout-titled" title="Exercise 4">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Exercise 4
-</div>
-</div>
-<div class="callout-body-container callout-body">
-
-</div>
-</div>
-<div id="answer4" class="callout callout-style-default callout-caution no-icon callout-titled" title="Answer 4">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Answer 4
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-
-</div>
-</div>
-</div>
-<div id="exercise-5" class="callout callout-style-default callout-note no-icon callout-titled" title="Exercise 5">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Exercise 5
-</div>
-</div>
-<div class="callout-body-container callout-body">
-
-</div>
-</div>
-<div id="answer5" class="callout callout-style-default callout-caution no-icon callout-titled" title="Answer 5">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Answer 5
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-
 </div>
 </div>
 </div>
