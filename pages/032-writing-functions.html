@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../pages/040-tidyverse.html" rel="next">
-<link href="../pages/031-importing-functions.html" rel="prev">
+<link href="../pages/033-error-functions.html" rel="next">
+<link href="../pages/030-functions.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -173,7 +173,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/022-loading-packages.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Loading packages</span></a>
+ <span class="menu-text">Using packages</span></a>
   </div>
 </li>
       </ul>
@@ -189,14 +189,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/031-importing-functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Importing functions</span></a>
+  <a href="../pages/032-writing-functions.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Writing functions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/032-writing-functions.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Writing functions</span></a>
+  <a href="../pages/033-error-functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Handling errors</span></a>
   </div>
 </li>
       </ul>
@@ -252,8 +252,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#writing-your-own-functions" id="toc-writing-your-own-functions" class="nav-link active" data-scroll-target="#writing-your-own-functions">Writing your own functions</a></li>
-  <li><a href="#scaffolding" id="toc-scaffolding" class="nav-link" data-scroll-target="#scaffolding">Scaffolding</a></li>
+  <li><a href="#scaffolding" id="toc-scaffolding" class="nav-link active" data-scroll-target="#scaffolding">Scaffolding</a></li>
   </ul>
 </nav>
     </div>
@@ -279,14 +278,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Functions provide a way of packaging code into reusable and easy-to-use components. We saw plenty of examples of functions in the last chapter, e.g.&nbsp;<code>print()</code> wraps up all the logic about exactly how to print things, all you need to do is pass in some arguments and it handles the rest. Likewise with <code>math.sqrt()</code>, you don’t need to understand the algorithm it uses, simply what it needs you to pass it, and what it returns back to you.</p>
+<p>Functions provide a way of packaging code into reusable and easy-to-use components. We saw plenty of examples of functions in the last chapter, e.g.&nbsp;<code>cat()</code> wraps up all the logic about exactly how to print things, all you need to do is pass in some arguments and it handles the rest.</p>
 <p>You can also bundle up your own logic into functions, allowing you to avoid repeating yourself and make your code easier to read. To explain how they work, lets imagine we are writing some code to help us with baking recipes. Often you will need to convert between different units, for example from ounces to grams. Create a new script <code>convert.R</code> with the below code and run it.</p>
-<section id="writing-your-own-functions" class="level3">
-<h3 class="anchored" data-anchor-id="writing-your-own-functions">Writing your own functions</h3>
-<p>You can write your own functions in R! For example, let’s try to write a function that calculates the mean average of a list of numbers.</p>
-<p>As input, the function will take a list of numbers. It should output a number which is the mean of those numbers.</p>
-<p>There are many ways this function could be written. Here is a possible solution;</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>calculate_mean <span class="ot">&lt;-</span> <span class="cf">function</span>(values){</span>
+<p>You can write your own functions in R! For example, let’s try to write a function that calculates the mean average of a list of numbers. As input, the function will take a list of numbers. It should output a number which is the mean of those numbers.</p>
+<p>There are many ways this function could be written. Here is a possible solution</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>calculate_mean <span class="ot">&lt;-</span> <span class="cf">function</span>(values){</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>     total <span class="ot">&lt;-</span> <span class="fl">0.0</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>     count <span class="ot">&lt;-</span> <span class="dv">0</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>     <span class="cf">for</span> (value <span class="cf">in</span> values){</span>
@@ -295,37 +292,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>     }</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>     <span class="fu">return</span>(total <span class="sc">/</span> count)</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>We can then use this function, to, e.g.&nbsp;calculate the average height of a group of people, by typing;</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>person_heights <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">1.62</span>, <span class="fl">1.80</span>, <span class="fl">1.56</span>, <span class="fl">1.73</span>, <span class="fl">1.91</span>)</span>
+</div>
+<p>We can then use this function, to, e.g.&nbsp;calculate the average height of a group of people, by typing:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>person_heights <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">1.62</span>, <span class="fl">1.80</span>, <span class="fl">1.56</span>, <span class="fl">1.73</span>, <span class="fl">1.91</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>average_height <span class="ot">&lt;-</span> <span class="fu">calculate_mean</span>(person_heights)</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">"The average height is %.2f m</span><span class="sc">\n</span><span class="st">"</span>, average_height))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Running this would print;</p>
+<div class="cell-output cell-output-stdout">
 <pre><code>The average height is 1.72 m</code></pre>
-</section>
+</div>
+</div>
 <section id="scaffolding" class="level3">
 <h3 class="anchored" data-anchor-id="scaffolding">Scaffolding</h3>
-<p>To explain how this worked, we need to look at how this function was defined. There is some scaffolding that is common to all functions. First, we define the function name. In R, this is a variable that holds the code of the function. We define this variable and assign data to it in the same way as if this was assigning a number to a numeric variable, or a string to a string variable, namely using the syntax <code>variable &lt;- value</code>:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>   Variable    assigned  value </span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>      ↓           ↓      ↓</span>
+<p>To explain how this worked, we need to look at how this function was defined. There is some scaffolding that is common to all functions. First, we define the function name. In R, this is a variable that holds the code of the function. We define this variable and assign data to it in the same way as if this was assigning a number to a numeric variable, or a string to a string variable, namely using the syntax <code>variable &lt;- value</code>.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#   Variable    assigned  value </span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#      ↓           ↓      ↓</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>calculate_average <span class="ot">&lt;-</span> <span class="cf">function</span>(...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Next, we have the keyword <code>function</code>, that says that this is some data that is of type function. This means that the data will contain code. The arguments to <code>function</code> are the arguments you would like to use as input for your new function;</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>                     keyword  arguments</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                        ↓        ↓</span>
+<p>Next, we have the keyword <code>function</code>, that says that this is some data that is of type function. This means that the data will contain code. The arguments to <code>function</code> are the arguments you would like to use as input for your new function.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#                    keyword  arguments</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#                       ↓        ↓</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>calculate_average <span class="ot">&lt;-</span> <span class="cf">function</span>(values) {</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Next, you need the body of the function. This body is the lines of code that will be run when your function is called. Just like with <code>for</code> loops or <code>if</code> statements, the body of code is contained within curly brackets</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>                                  Open curly brackets</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                                      ↓</span>
+<p>Next, you need the body of the function. This body is the lines of code that will be run when your function is called. Just like with <code>for</code> loops or <code>if</code> statements, the body of code is contained within curly brackets.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#                                Open curly brackets</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#                                     ↓</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>calculate_average <span class="ot">&lt;-</span> <span class="cf">function</span>(values) {</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># body of the function is the</span></span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># lines of code within the curly brackets</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>↑</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>Close curly brackets</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>} <span class="co"># &lt;- Close curly brackets</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The input(s) for the function is/are the argument(s) that are passed to <code>function</code>, in this case, <code>values</code>. Our code will loop through all of the values in <code>values</code> to calculate the mean average. Once we have finished, we reach the final part of the function, which is <code>return</code>. This is used to return the output of the function back to the caller.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">Input</span>(s)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                             ↓</span>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#                          Input(s)</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#                            ↓</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>calculate_mean <span class="ot">&lt;-</span> <span class="cf">function</span>(values){</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>     total <span class="ot">&lt;-</span> <span class="fl">0.0</span></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>     count <span class="ot">&lt;-</span> <span class="dv">0</span></span>
@@ -334,70 +332,67 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>         count <span class="ot">&lt;-</span> count <span class="sc">+</span> <span class="dv">1</span></span>
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>     }</span>
 <span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>     <span class="fu">return</span>(total <span class="sc">/</span> count)</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        ↑</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>     Return output</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">#      ↑</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">#    Return output</span></span>
 <span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Finally, when we call the function, the arguments that pass to the function are used as the input. The output is then returned and assigned to the result variable. So, in this case;</p>
-<pre><code>                Call function      with input(s)
-                        ↓             ↓  
-average_height &lt;- calculate_mean(person_heights)
-     ↑         ↑
-  Output     assigned</code></pre>
+<p>Finally, when we call the function, the arguments that pass to the function are used as the input. The output is then returned and assigned to the result variable. So, in this case:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#                Call function      with input(s)</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#                        ↓             ↓  </span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>average_height <span class="ot">&lt;-</span> <span class="fu">calculate_mean</span>(person_heights)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#     ↑         ↑</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#  Output     assigned</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>calculate_mean</code> is called with <code>person_heights</code>. The data referred to by <code>person_heights</code> is passed to <code>calculate_mean</code> and in this function is referred to as <code>values</code>. This data is looped over, the mean average calculated, resulting in an output that is returned at the end of the function, and assigned to the variable <code>average_height</code>.</p>
-<blockquote class="blockquote">
-<p>EXERCISE</p>
+<div id="exercise1" class="callout callout-style-default callout-note no-icon callout-titled" title="Exercise">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Write a function, called <code>calculate_max</code>, that returns the largest value. Use this to find the largest height in the list of heights above.</p>
-<p>Hint - start by using a variable called <code>max_value</code> and setting that equal to <code>NA</code>. Then use <code>if (is.na(max_value) || value &gt; max_value)</code> to test whether a <code>value</code> in <code>values</code> is greater. The <code>||</code> means “or”</p>
-<p><a href="functions_answer01.html">Answer</a></p>
-</blockquote>
-<p>##&nbsp;Errors</p>
-<p>Your function works well, but what would happen if the wrong arguments were passed? What should we do if someone did this?</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">calculate_mean</span>(<span class="fu">c</span>(<span class="st">"cat"</span>, <span class="st">"dog"</span>, <span class="st">"horse"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>If you run this now, you will see that R prints an error;</p>
-<pre><code>Error in total + value : non-numeric argument to binary operator</code></pre>
-<p>This isn’t very descriptive of helpful. You can control how R will behave in an error condition by using <code>stop</code> or <code>warning</code>.</p>
-<p>You use <code>stop</code> if you want to stop the function from continuing, and to print an error message for the user. For example, we could use <code>is.numeric</code> to check if all of the values are numeric. If not, then we could <code>stop</code>;</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>calculate_mean <span class="ot">&lt;-</span> <span class="cf">function</span>(values){</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>     total <span class="ot">&lt;-</span> <span class="fl">0.0</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>     count <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>     <span class="cf">for</span> (value <span class="cf">in</span> values){</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>         <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(value)){</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>             <span class="fu">stop</span>(<span class="st">"Cannot calculate average of non-numeric values"</span>)</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>         }</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>         total <span class="ot">&lt;-</span> total <span class="sc">+</span> value</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>         count <span class="ot">&lt;-</span> count <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>     }</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>     <span class="fu">return</span>(total <span class="sc">/</span> count)</span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>(note that <code>!</code> means “not”)</p>
-<p>Now running;</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">calculate_mean</span>(<span class="fu">c</span>(<span class="st">"cat"</span>, <span class="st">"dog"</span>, <span class="st">"horse"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>gives the more useful error message;</p>
-<pre><code>Error in calculate_mean(c("cat", "dog", "horse")) : 
-  Cannot calculate average of non-numeric values</code></pre>
-<p>However, what if instead of stopping, we want to calculate the average of any numeric values, and just warn the user if non-numeric values are passed? We can do this using the <code>warning</code> function, e.g.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>calculate_mean <span class="ot">&lt;-</span> <span class="cf">function</span>(values){</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>     total <span class="ot">&lt;-</span> <span class="fl">0.0</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>     count <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>     <span class="cf">for</span> (value <span class="cf">in</span> values){</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>         number <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(value)</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>         <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.na</span>(number)){</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>             total <span class="ot">&lt;-</span> total <span class="sc">+</span> number</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>             count <span class="ot">&lt;-</span> count <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>         } <span class="cf">else</span> {</span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>             <span class="fu">warning</span>(<span class="st">"Skipping '"</span>, value, </span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"' as it is not numeric"</span>)</span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>         }</span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>     }</span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>     <span class="fu">return</span>(total <span class="sc">/</span> count)</span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>In this case, we try to convert the value into a number using the <code>as.numeric</code> function. If this fails, it will return <code>NA</code>. We then test for <code>NA</code> using the <code>is.na</code> function, printing a warning that we are skipping this value if it isn’t a number.</p>
-<blockquote class="blockquote">
-<p>EXERCISE</p>
-<p>Add error handling to your <code>calculate_max</code> function so that it warns when non-numeric values are skipped, and stops when there is no maximum value (i.e.&nbsp;because there are no numeric values passed).</p>
-<p><a href="functions_answer02.html">Answer</a></p>
-</blockquote>
+<p><strong>Hint</strong>: start by using a variable called <code>max_value</code> and setting that equal to <code>NA</code>. Then use <code>if (is.na(max_value) || value &gt; max_value)</code> to test whether a <code>value</code> in <code>values</code> is greater. The <code>||</code> is a logical OR.</p>
+</div>
+</div>
+<div id="answer1" class="callout callout-style-default callout-caution no-icon callout-titled" title="Answer">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>calculate_max <span class="ot">&lt;-</span> <span class="cf">function</span>(values){</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    max_value <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (value <span class="cf">in</span> values){</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (<span class="fu">is.na</span>(max_value) <span class="sc">||</span> value <span class="sc">&gt;</span> max_value){</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>            max_value <span class="ot">=</span> value</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(max_value)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>person_heights <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">1.62</span>, <span class="fl">1.80</span>, <span class="fl">1.56</span>, <span class="fl">1.73</span>, <span class="fl">1.91</span>)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>max_height <span class="ot">=</span> <span class="fu">calculate_max</span>(person_heights)</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"The highest person is"</span>, max_height, <span class="st">"m."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The highest person is 1.91 m.</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 
 </section>
@@ -825,13 +820,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../pages/031-importing-functions.html" class="pagination-link" aria-label="Importing functions">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Importing functions</span>
+      <a href="../pages/030-functions.html" class="pagination-link" aria-label="Functions">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Functions</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../pages/040-tidyverse.html" class="pagination-link" aria-label="Tidyverse">
-        <span class="nav-page-text">Tidyverse</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../pages/033-error-functions.html" class="pagination-link" aria-label="Handling errors">
+        <span class="nav-page-text">Handling errors</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

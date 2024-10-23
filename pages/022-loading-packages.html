@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Loading packages – Intermediate R</title>
+<title>Using packages – Intermediate R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -115,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/020-packages.html">Packages</a></li><li class="breadcrumb-item"><a href="../pages/022-loading-packages.html">Loading packages</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/020-packages.html">Packages</a></li><li class="breadcrumb-item"><a href="../pages/022-loading-packages.html">Using packages</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -173,7 +173,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/022-loading-packages.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Loading packages</span></a>
+ <span class="menu-text">Using packages</span></a>
   </div>
 </li>
       </ul>
@@ -189,14 +189,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/031-importing-functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Importing functions</span></a>
+  <a href="../pages/032-writing-functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Writing functions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/032-writing-functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Writing functions</span></a>
+  <a href="../pages/033-error-functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Handling errors</span></a>
   </div>
 </li>
       </ul>
@@ -247,21 +247,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#using-a-package" id="toc-using-a-package" class="nav-link active" data-scroll-target="#using-a-package">Using a package</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/020-packages.html">Packages</a></li><li class="breadcrumb-item"><a href="../pages/022-loading-packages.html">Loading packages</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/020-packages.html">Packages</a></li><li class="breadcrumb-item"><a href="../pages/022-loading-packages.html">Using packages</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Loading packages</h1>
+<h1 class="title">Using packages</h1>
 </div>
 
 
@@ -278,33 +272,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="using-a-package" class="level3">
-<h3 class="anchored" data-anchor-id="using-a-package">Using a package</h3>
-<p>You can use a package in your script via the <code>library</code> command. To use <code>stringr</code> you should type;</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>into the console. When you press return, nothing should happen. If you see output similar to;</p>
+<p>Once installed, packages are loaded into the R environment using the function <code>library()</code>. For example, to use <code>stringr</code> you should type:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If you see output similar to;</p>
 <pre><code>Error in library(stringr) : there is no package called ‘stringr’</code></pre>
-<p>then this means that <code>stringr</code> is not installed properly.</p>
-<p>To get help on a package type <code>?</code> before its name, e.g.</p>
+<p>then this means that <code>stringr</code> is not installed properly. Try installing it again with <code>install.packages("stringr")</code>.</p>
+<p>To get help on a package type <code>?</code> followed by its name, e.g.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>?stringr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>All of the functions in <code>stringr</code> start with <code>str_</code> and take a string (or vector/list of strings) as the first argument.</p>
-<p>Key functions are;</p>
-<ul>
-<li><code>str_c</code> : Modern replacement for <code>cat</code></li>
-<li><code>str_length</code> : Count the number of characters in a string</li>
-<li><code>str_sub</code> : Extract substrings</li>
-<li><code>str_trim</code> : Remove trailing and leading whitespace</li>
-<li><code>str_pad</code> : Pad a string</li>
-<li><code>str_wrap</code> : Wrap a string into a paragraph</li>
-</ul>
-<blockquote class="blockquote">
-<p>EXERCISE</p>
-<p>Use <code>?</code> to learn about the above <code>stringr</code> functions and have a play printing different strings to the console.</p>
-<p><a href="packages_answer01.html">Answer</a></p>
-</blockquote>
+<p>You can also look for the <em>vignette</em> documentation and examples typing</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vignette</span>(<span class="st">"stringr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="exerciseN" class="callout callout-style-default callout-note no-icon callout-titled" title="Exercise">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Learn more about the package<code>stringr</code> exploring its <em>vigenette</em>.</p>
+</div>
+</div>
+<div id="answerN" class="callout callout-style-default callout-caution no-icon callout-titled" title="Answer">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vignette</span>(<span class="st">"stringr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="../assets/stringr.png" title="Stringr vignette" class="img-fluid"></p>
+</div>
+</div>
+</div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

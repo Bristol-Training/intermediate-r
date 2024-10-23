@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -173,7 +139,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/022-loading-packages.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Loading packages</span></a>
+ <span class="menu-text">Using packages</span></a>
   </div>
 </li>
       </ul>
@@ -189,14 +155,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/031-importing-functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Importing functions</span></a>
+  <a href="../pages/032-writing-functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Writing functions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/032-writing-functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Writing functions</span></a>
+  <a href="../pages/033-error-functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Handling errors</span></a>
   </div>
 </li>
       </ul>
@@ -272,7 +238,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>This page contains a number of questions and exercises to give you a chance to practise what you have learned this session. You should create a new <code>.R</code> R file for each exercise.</p>
+<p>This page contains a number of questions and exercises to give you a chance to practise what you have learned this session.</p>
 <div id="exercise-1" class="callout callout-style-default callout-note no-icon callout-titled" title="Exercise 1">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -283,15 +249,7 @@ Exercise 1
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The first exercise is to practise searching the documentation. From the list of modules in the standard library, find one that contains a function to give the current date and time.</p>
-<p>Fill in the <code>...</code> in the snippet below.</p>
-<pre class="rscript"><code>import ...
 
-time_now &lt;- ...
-
-print(time_now.isoformat())</code></pre>
-<p>The output should be something like the following, but with today’s date and time:</p>
-<pre><code>2048-08-32T10:53:15.062603</code></pre>
 </div>
 </div>
 <div id="answer1" class="callout callout-style-default callout-caution no-icon callout-titled" title="Answer 1">
@@ -306,27 +264,7 @@ Answer 1
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>The function we can use is <a href="https://docs.RScript.org/3/library/datetime.html#datetime.datetime.now"><code>datetime.datetime.now()</code></a>. There is an <a href="https://docs.RScript.org/3/library/datetime.html#examples-of-usage-datetime">example in that module as well</a>.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| filename: ex1.R</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>import datetime</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>time_now <span class="ot">&lt;-</span> <span class="fu">datetime.datetime.now</span>()</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">time_now.isoformat</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Terminal/Command Prompt</strong></pre>
-</div>
-<div class="sourceCode" id="cb4" data-filename="Terminal/Command Prompt"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">RScript</span> ex1.R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>import datetime</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>time_now <span class="ot">&lt;-</span> <span class="fu">datetime.datetime.now</span>()</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">time_now.isoformat</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
 </div>
 </div>
 </div>
@@ -340,16 +278,7 @@ Exercise 2
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Write a function which can accept a string as an argument and return the first word in that string. To start you off, here’s skeleton of what the function should look like.</p>
-<pre class="rscript"><code>def first_word(l):
-    ...
-    return ...</code></pre>
-<p>you should be able to use it like:</p>
-<pre class="rscript"><code>sentence &lt;- "This is a collection of words"
-word &lt;- first_word(sentence)
-print(word)</code></pre>
-<p>giving the output:</p>
-<pre><code>This</code></pre>
+
 </div>
 </div>
 <div id="answer2" class="callout callout-style-default callout-caution no-icon callout-titled" title="Answer 2">
@@ -364,16 +293,7 @@ Answer 2
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| filename: ex2.R</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>def <span class="fu">first_word</span>(l)<span class="sc">:</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    words <span class="ot">&lt;-</span> <span class="fu">l.split</span>()</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    the_first_word <span class="ot">&lt;-</span> words[<span class="dv">0</span>]</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    return the_first_word</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>sentence <span class="ot">&lt;-</span> <span class="st">"This is a collection of words"</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>word <span class="ot">&lt;-</span> <span class="fu">first_word</span>(sentence)</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(word)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
 </div>
 </div>
 </div>
@@ -387,24 +307,7 @@ Exercise 3
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Write a function called <code>count_word_match</code> which accepts three agruments:</p>
-<ol type="1">
-<li>a string which contains multiple words separated by spaces,</li>
-<li>a string which gives the word that you want to count the occurrences of and</li>
-<li>a boolean (<code>True</code> or <code>False</code>) which specifies whether the match should be case-sensitive.</li>
-</ol>
-<pre class="rscript"><code>def count_word_match(words, match, case_sensitive):
-    ...
-    return ...</code></pre>
-<p>you should be able to use it like:</p>
-<pre class="rscript"><code>count1 &lt;- count_word_match("To be or not to be", "to", True)
-print(count1)
 
-count2 &lt;- count_word_match("To be or not to be", "to", False)
-print(count2)</code></pre>
-<p>giving the output:</p>
-<pre><code>1
-2</code></pre>
 </div>
 </div>
 <div id="answer3" class="callout callout-style-default callout-caution no-icon callout-titled" title="Answer 3">
@@ -419,28 +322,7 @@ Answer 3
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| filename: ex3.R</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>def <span class="fu">count_word_match</span>(words, match, case_sensitive)<span class="sc">:</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> not case_sensitive<span class="sc">:</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Make both the words and the match a consistent case</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>        words <span class="ot">&lt;-</span> <span class="fu">words.casefold</span>()</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>        match <span class="ot">&lt;-</span> <span class="fu">match.casefold</span>()</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    word_list <span class="ot">&lt;-</span> <span class="fu">words.split</span>()</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    count <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> word <span class="cf">in</span> word_list<span class="sc">:</span></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> word <span class="sc">==</span> match<span class="sc">:</span></span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>            count <span class="sc">+</span><span class="er">=</span> <span class="dv">1</span></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>    return count</span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>count1 <span class="ot">&lt;-</span> <span class="fu">count_word_match</span>(<span class="st">"To be or not to be"</span>, <span class="st">"to"</span>, True)</span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(count1)</span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>count2 <span class="ot">&lt;-</span> <span class="fu">count_word_match</span>(<span class="st">"To be or not to be"</span>, <span class="st">"to"</span>, False)</span>
-<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(count2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
 </div>
 </div>
 </div>
@@ -454,12 +336,7 @@ Exercise 4
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>For this exercise, you should write a function which can find references, like <code>[4]</code>, in some text.</p>
-<p>If the function is passed a string like:</p>
-<pre class="rscript"><code>"I recommend this book [1] but the other book [3] is better. Some people think that this website [10] is the best but I prefer this [7] one."</code></pre>
-<p>it should return a list of integers like:</p>
-<pre class="rscript"><code>[1, 3, 10, 7]</code></pre>
-<p>The function should be called <code>find_references</code>.</p>
+
 </div>
 </div>
 <div id="answer4" class="callout callout-style-default callout-caution no-icon callout-titled" title="Answer 4">
@@ -474,30 +351,7 @@ Answer 4
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>This exercise it tricker, but if you make some assumptions about the format of the input, you can make your life easier. For example, you can assume for now that every reference like <code>[4]</code> is surrounded by spaces. This allows <code>str.split()</code> to pull each one out as a “word”. You can also assume that every reference is an integer number.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| filename: ex4.R</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>def <span class="fu">find_references</span>(text)<span class="sc">:</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    words <span class="ot">&lt;-</span> <span class="fu">text.split</span>()</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    refs <span class="ot">&lt;-</span> []</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># For each word in the text</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> word <span class="cf">in</span> words<span class="sc">:</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># if it's surrounded by square brackets</span></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> word[<span class="dv">0</span>] <span class="sc">==</span> <span class="st">"["</span> and word[<span class="sc">-</span><span class="dv">1</span>] <span class="sc">==</span> <span class="st">"]"</span><span class="sc">:</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>            <span class="co"># grab the bit between the square brackets</span></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>            reference <span class="ot">&lt;-</span> word[<span class="dv">1</span><span class="sc">:-</span><span class="dv">1</span>]</span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>            <span class="co"># convert it to a number</span></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>            reference_number <span class="ot">&lt;-</span> <span class="fu">int</span>(reference)</span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>            <span class="fu">refs.append</span>(reference_number)</span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>    return refs</span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>example_text <span class="ot">&lt;-</span> <span class="st">"I recommend this book [1] but the other book [3] is better. Some people think that this website [10] is the best but I prefer this [7] one."</span></span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>references <span class="ot">&lt;-</span> <span class="fu">find_references</span>(example_text)</span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(references)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
 </div>
 </div>
 </div>
@@ -511,25 +365,7 @@ Exercise 5
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Take the function that you wrote in the last exercise and move it into a module called <code>refs</code>. You should then write a test file called <code>test_refs.R</code> containing:</p>
-<pre class="rscript"><code>import refs
 
-text &lt;- "I recommend this book [1] but the other book [3] is better. Some people think that this website [10] is the best but I prefer this [7] one."
-
-numbers &lt;- refs.find_references(text)
-
-expected &lt;- [1, 3, 10, 7]
-if numbers == expected:
-    print("Test passed")
-else:
-    print("Test failed:", numbers, "is not the same as", expected)</code></pre>
-<p>You should make sure that the test passes when the test script is run with:</p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Terminal/Command Prompt</strong></pre>
-</div>
-<div class="sourceCode" id="cb18" data-filename="Terminal/Command Prompt"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">RScript</span> test_refs.R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </div>
 </div>
 <div id="answer5" class="callout callout-style-default callout-caution no-icon callout-titled" title="Answer 5">
@@ -544,38 +380,7 @@ Answer 5
 </div>
 <div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="sourceCode" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| filename: refs.R</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>def <span class="fu">find_references</span>(text)<span class="sc">:</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    words <span class="ot">&lt;-</span> <span class="fu">text.split</span>()</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    refs <span class="ot">&lt;-</span> []</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> word <span class="cf">in</span> words<span class="sc">:</span></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> word[<span class="dv">0</span>] <span class="sc">==</span> <span class="st">"["</span> and word[<span class="sc">-</span><span class="dv">1</span>] <span class="sc">==</span> <span class="st">"]"</span><span class="sc">:</span></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>            reference <span class="ot">&lt;-</span> word[<span class="dv">1</span><span class="sc">:-</span><span class="dv">1</span>]</span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>            reference_number <span class="ot">&lt;-</span> <span class="fu">int</span>(reference)</span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>            <span class="fu">refs.append</span>(reference_number)</span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    return refs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| filename: test_refs.R</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>import refs</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>text <span class="ot">&lt;-</span> <span class="st">"I recommend this book [1] but the other book [3] is better. Some people think that this website [10] is the best but I prefer this [7] one."</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">&lt;-</span> <span class="fu">refs.find_references</span>(text)</span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>expected <span class="ot">&lt;-</span> [<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">7</span>]</span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> numbers <span class="sc">==</span> expected<span class="sc">:</span></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">"Test passed"</span>)</span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span><span class="sc">:</span></span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">"Test failed:"</span>, numbers, <span class="st">"is not the same as"</span>, expected)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Terminal/Command Prompt</strong></pre>
-</div>
-<div class="sourceCode" id="cb21" data-filename="Terminal/Command Prompt"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">RScript</span> test_refs.R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+
 </div>
 </div>
 </div>
