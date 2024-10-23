@@ -75,7 +75,6 @@ max_idx <-
 
 max_idx
 
-breast[,max_idx]
 ```
 
 :::
