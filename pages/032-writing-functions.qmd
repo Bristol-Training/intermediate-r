@@ -3,11 +3,7 @@ title: Writing functions
 ---
 
 
-Functions provide a way of packaging code into reusable and easy-to-use components. We saw plenty of examples of functions in the last chapter, e.g. `cat()` wraps up all the logic about exactly how to print things, all you need to do is pass in some arguments and it handles the rest.
-
-You can also bundle up your own logic into functions, allowing you to avoid repeating yourself and make your code easier to read. To explain how they work, lets imagine we are writing some code to help us with baking recipes. Often you will need to convert between different units, for example from ounces to grams. Create a new script `convert.R` with the below code and run it.
-
-You can write your own functions in R! For example, let's try to write a function that calculates the mean average of a list of numbers. As input, the function will take a list of numbers. It should output a number which is the mean of those numbers.
+You can write your own functions in R. For example, let's try to write a function that calculates the mean average of a list of numbers. As input, the function will take a list of numbers. It should output a number which is the mean of those numbers.
 
 There are many ways this function could be written. Here is a possible solution
 
