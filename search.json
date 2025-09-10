@@ -76,21 +76,21 @@
   {
     "objectID": "answers/answer_string_methods.html",
     "href": "answers/answer_string_methods.html",
-    "title": "Intermediate R",
+    "title": "Intro to R (Part 2)",
     "section": "",
     "text": "You can split any string using the str.split function. By default it splits on spaces:\ns &lt;- \"what is your name\"\ns.split()\n\nJoin a list\nYou can join a list together by using the str.join function. Note that in front of the dot you put the string that you want to join with, and you pass the list you want to join together as an argument.\nl &lt;- [\"a\", \"b\", \"c\"]\n\"-\".join(l)\nl &lt;- [\"a\", \"b\", \"c\"]\n\":\".join(l)\nl &lt;- [\"a\", \"b\", \"c\"]\n\" \".join(l)"
   },
   {
     "objectID": "answers/answer_hello_name.html",
     "href": "answers/answer_hello_name.html",
-    "title": "Intermediate R",
+    "title": "Intro to R (Part 2)",
     "section": "",
     "text": "To get input from the person running your script, you can use the function input(). And to get the length of your variable you can call len().\n#| filename: hello.R\n#| eval: false\nmy_name &lt;- input(\"Please tell me your name: \")\n\nname_length &lt;- len(my_name)\n\nprint(f\"Hello {my_name}! Your name is {name_length} characters long\")\n#| echo: false\nmy_name &lt;- \"Jean\"\n\nprint(\"Please tell me your name:\", my_name)\n\nname_length &lt;- len(my_name)\n\nprint(f\"Hello {my_name}! Your name is {name_length} characters long\")"
   },
   {
     "objectID": "answers/answer_morse_case.html",
     "href": "answers/answer_morse_case.html",
-    "title": "Intermediate R",
+    "title": "Intro to R (Part 2)",
     "section": "",
     "text": "The function str.lower gives you back a copy of the string, but all made into lower case.\nIn our situation, the first letter is “S” and so letter.lower() will give us \"s\".\n#| filename: encode.R\n#| output: false\nletter_to_morse &lt;- {\n    'a':'.-', 'b':'-...', 'c':'-.-.', 'd':'-..', 'e':'.', 'f':'..-.', \n    'g':'--.', 'h':'....', 'i':'..', 'j':'.---', 'k':'-.-', 'l':'.-..', 'm':'--', \n    'n':'-.', 'o':'---', 'p':'.--.', 'q':'--.-', 'r':'.-.', 's':'...', 't':'-',\n    'u':'..-', 'v':'...-', 'w':'.--', 'x':'-..-', 'y':'-.--', 'z':'--..',\n    '0':'-----', '1':'.----', '2':'..---', '3':'...--', '4':'....-',\n    '5':'.....', '6':'-....', '7':'--...', '8':'---..', '9':'----.', ' ':'/'\n}\n\nmessage &lt;- \"SOS We have hit an iceberg and need help quickly\"\n\nmorse &lt;- []\n\nfor letter in message:\n    letter &lt;- letter.lower()  #  ← We have added this line of code\n    morse_letter &lt;- letter_to_morse[letter]\n    morse.append(morse_letter)\n\nmorse_message &lt;- \" \".join(morse)\n\nprint(f\"Incoming message: {message}\")\nprint(f\"   Morse encoded: {morse_message}\")\n\n\nTerminal/Command Prompt\n\nRScript encode.R\n\n#| echo: false\nletter_to_morse &lt;- {\n    'a':'.-', 'b':'-...', 'c':'-.-.', 'd':'-..', 'e':'.', 'f':'..-.', \n    'g':'--.', 'h':'....', 'i':'..', 'j':'.---', 'k':'-.-', 'l':'.-..', 'm':'--', \n    'n':'-.', 'o':'---', 'p':'.--.', 'q':'--.-', 'r':'.-.', 's':'...', 't':'-',\n    'u':'..-', 'v':'...-', 'w':'.--', 'x':'-..-', 'y':'-.--', 'z':'--..',\n    '0':'-----', '1':'.----', '2':'..---', '3':'...--', '4':'....-',\n    '5':'.....', '6':'-....', '7':'--...', '8':'---..', '9':'----.', ' ':'/'\n}\n\nmessage &lt;- \"SOS We have hit an iceberg and need help quickly\"\n\nmorse &lt;- []\n\nfor letter in message:\n    letter &lt;- letter.lower()  #  ← We have added this line of code\n    morse_letter &lt;- letter_to_morse[letter]\n    morse.append(morse_letter)\n\nmorse_message &lt;- \" \".join(morse)\n\nprint(f\"Incoming message: {message}\")\nprint(f\"   Morse encoded: {morse_message}\")"
   },
